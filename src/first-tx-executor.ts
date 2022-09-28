@@ -1,61 +1,36 @@
-import { BigInt } from "@graphprotocol/graph-ts"
 import {
-  FirstTxExecutor,
-  AdminUpdated,
-  CCSmartWalletAddressUpdated,
-  FirstPartOfSwapExecuted
+  AdminUpdated as AdminUpdatedEvent,
+  CCSmartWalletAddressUpdated as CCSmartWalletAddressUpdatedEvent,
+  FirstPartOfSwapExecuted as FirstPartOfSwapExecutedEvent,
 } from "../generated/FirstTxExecutor/FirstTxExecutor"
-import { ExampleEntity } from "../generated/schema"
+import { AdminUpdated, CCSmartWalletAddressUpdated, FirstPartOfSwapExecuted } from "../generated/schema"
 
-export function handleAdminUpdated(event: AdminUpdated): void {
-  // Entities can be loaded from the store using a string ID; this ID
-  // needs to be unique across all entities of the same type
-  let entity = ExampleEntity.load(event.transaction.from.toHex())
 
-  // Entities only exist after they have been saved to the store;
-  // `null` checks allow to create entities on demand
-  if (!entity) {
-    entity = new ExampleEntity(event.transaction.from.toHex())
-
-    // Entity fields can be set using simple assignments
-    entity.count = BigInt.fromI32(0)
-  }
-
-  // BigInt and BigDecimal math are supported
-  entity.count = entity.count + BigInt.fromI32(1)
-
-  // Entity fields can be set based on event parameters
+export function handleAdminUpdated(event: AdminUpdatedEvent): void {
+  let entity = new AdminUpdated(event.transaction.hash.toHex() + "-" + event.logIndex.toString())
   entity.oldAdmin = event.params.oldAdmin
   entity.newAdmin = event.params.newAdmin
-
-  // Entities can be written to the store with `.save()`
   entity.save()
-
-  // Note: If a handler doesn't require existing field values, it is faster
-  // _not_ to load the entity from the store. Instead, create it fresh with
-  // `new Entity(...)`, set the fields that should be updated and save the
-  // entity back to the store. Fields that were not set or unset remain
-  // unchanged, allowing for partial updates to be applied.
-
-  // It is also possible to access smart contracts from mappings. For
-  // example, the contract that has emitted the event can be connected to
-  // with:
-  //
-  // let contract = Contract.bind(event.address)
-  //
-  // The following functions can then be called on this contract to access
-  // state variables and other data:
-  //
-  // - contract.AUGUSTUS_SWAPPER(...)
-  // - contract.TOKEN_TRANSFER_PROXY(...)
-  // - contract.ccSmartWallet(...)
-  // - contract.currentAdmin(...)
 }
 
-export function handleCCSmartWalletAddressUpdated(
-  event: CCSmartWalletAddressUpdated
-): void {}
+export function handleCCSmartWalletAddressUpdated(event: CCSmartWalletAddressUpdatedEvent): void {
+  let entity = new CCSmartWalletAddressUpdated(event.transaction.hash.toHex() + "-" + event.logIndex.toString())
+  entity.oldAddress = event.params.oldAddress
+  entity.newAddress = event.params.newAddress
+  entity.save()
+}
 
-export function handleFirstPartOfSwapExecuted(
-  event: FirstPartOfSwapExecuted
-): void {}
+export function handleFirstPartOfSwapExecuted(event: FirstPartOfSwapExecutedEvent): void {
+  let entity = new FirstPartOfSwapExecuted(event.transaction.hash.toHex() + "-" + event.logIndex.toString())
+  entity.destAmount = event.params.destAmount
+  entity.destNetworkId = event.params.destNetworkId
+  entity.destTokenAddress = event.params.destTokenAddress
+  entity.destUserAddress = event.params.destUserAddress
+  entity.slippage = event.params.slippage
+  entity.initiator = event.transaction.from;
+  entity.srcTransactionHash = event.transaction.hash
+  entity.blockHash = event.block.hash;
+  entity.blockNumber = event.block.number;
+  entity.timestamp = event.block.timestamp;
+  entity.save()
+}

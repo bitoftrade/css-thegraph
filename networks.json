@@ -1,7 +1,22 @@
 {
   "matic": {
     "FirstTxExecutor": {
-      "address": "0x99f4cad6aadfc474ef081b12388b73f22d9f620c"
+      "address": "0x892ce50D76233990c90dd8e2e17b32A54c163A10",
+      "startBlock": 33677450
+    },
+    "CCSmartWallet": {
+      "address": "0xdb92c94a0e8295e54792f22dce6620fb38a91980",
+      "startBlock": 33677450
+    }
+  },
+  "bsc": {
+    "FirstTxExecutor": {
+      "address": "0x892ce50D76233990c90dd8e2e17b32A54c163A10",
+      "startBlock": 21729257
+    },
+    "CCSmartWallet": {
+      "address": "0xdb92c94a0e8295e54792f22dce6620fb38a91980",
+      "startBlock": 21729257
     }
   }
 }

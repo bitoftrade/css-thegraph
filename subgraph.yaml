@@ -1,16 +1,17 @@
-specVersion: 0.0.1
+specVersion: 0.0.4
 schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum
     name: FirstTxExecutor
-    network: matic
+    network: bsc
     source:
-      address: "0x99f4cad6aadfc474ef081b12388b73f22d9f620c"
       abi: FirstTxExecutor
+      address: "0x892ce50D76233990c90dd8e2e17b32A54c163A10"
+      startBlock: 21729257
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.5
+      apiVersion: 0.0.6
       language: wasm/assemblyscript
       entities:
         - AdminUpdated
@@ -27,3 +28,38 @@ dataSources:
         - event: FirstPartOfSwapExecuted(uint256,address,uint256,address,uint256)
           handler: handleFirstPartOfSwapExecuted
       file: ./src/first-tx-executor.ts
+  - kind: ethereum
+    name: CCSmartWallet
+    network: bsc
+    source:
+      abi: CCSmartWallet
+      address: "0xdb92c94a0e8295e54792f22dce6620fb38a91980"
+      startBlock: 21729257
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - CCSmartWalletAdminUpdated
+        - ArbitraryTxWasSent
+        - Deposit
+        - MarketMakerUpdated
+        - ResponseTxWasSent
+        - SignerUpdated
+      abis:
+        - name: CCSmartWallet
+          file: ./abis/CCSmartWallet.json
+      eventHandlers:
+        - event: CCSmartWalletAdminUpdated(address,address)
+          handler: handleCCSmartWalletAdminUpdated
+        - event: ArbitraryTxWasSent(address,bytes)
+          handler: handleArbitraryTxWasSent
+        - event: Deposit(indexed address,uint256)
+          handler: handleDeposit
+        - event: MarketMakerUpdated(address,address)
+          handler: handleMarketMakerUpdated
+        - event: ResponseTxWasSent(uint256,bytes32)
+          handler: handleResponseTxWasSent
+        - event: SignerUpdated(indexed address,indexed address)
+          handler: handleSignerUpdated
+      file: ./src/cc-smart-wallet.ts

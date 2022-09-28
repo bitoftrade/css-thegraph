@@ -1,6 +1,66 @@
-type ExampleEntity @entity {
+type AdminUpdated @entity { 
   id: ID!
-  count: BigInt!
   oldAdmin: Bytes! # address
   newAdmin: Bytes! # address
+}
+
+type CCSmartWalletAddressUpdated @entity {
+  id: ID!
+  oldAddress: Bytes! # address
+  newAddress: Bytes! # address
+}
+
+type FirstPartOfSwapExecuted @entity {
+  id: ID!
+  destNetworkId: BigInt! # uint256
+  destTokenAddress: Bytes! # address
+  destAmount: BigInt! # uint256
+  destUserAddress: Bytes! # address
+  slippage: BigInt! # uint256
+  initiator: Bytes! # address
+  srcTransactionHash: Bytes! 
+  blockHash: Bytes!
+  blockNumber: BigInt!
+  timestamp: BigInt!
+}
+
+type CCSmartWalletAdminUpdated @entity {
+  id: ID!
+  oldAdmin: Bytes! # address
+  newAdmin: Bytes! # address
+}
+
+type ArbitraryTxWasSent @entity {
+  id: ID!
+  to: Bytes! # address
+  callData: Bytes! # bytes
+}
+
+type Deposit @entity {
+  id: ID!
+  sender: Bytes! # address
+  amount: BigInt! # uint256
+}
+
+type MarketMakerUpdated @entity {
+  id: ID!
+  oldMarketMaker: Bytes! # address
+  newMarketMaker: Bytes! # address
+}
+
+type ResponseTxWasSent @entity {
+  id: ID!
+  srcChainId: BigInt! # uint256
+  srcTransactionHash: Bytes! # bytes32
+  initiator: Bytes! # address
+  destTransactionHash: Bytes! 
+  blockHash: Bytes!
+  blockNumber: BigInt!
+  timestamp: BigInt!
+}
+
+type SignerUpdated @entity {
+  id: ID!
+  oldSigner: Bytes! # address
+  newSigner: Bytes! # address
 }
