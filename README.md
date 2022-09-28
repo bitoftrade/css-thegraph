@@ -1,25 +1,26 @@
 ## Deployment
 
-Supported networks: 
+# Supported networks: 
 1. [matic](https://thegraph.com/hosted-service/subgraph/danylocodecare/v1-polygon-bitoftrade-css)
 2. [bsc](https://thegraph.com/hosted-service/subgraph/danylocodecare/v1-bsc-bitoftrade-css)
 
 ```bash
-      yarn \ 
+   yarn \ 
    && yarn build --network <supported_network> \ 
    && yarn deploy --product hosted-service <thegraph_username>/<thegraph_service_name>
 ```
 
-Supported events: 
+# Supported events: 
 
-FirstTxExecutor:
+### FirstTxExecutor:
+
 ```bash
    AdminUpdated(indexed address,indexed address)
    CCSmartWalletAddressUpdated(address,address)
    FirstPartOfSwapExecuted(uint256,address,uint256,address,uint256)
 ```
 
-CCSmartWallet:
+### CCSmartWallet:
 ```bash
    CCSmartWalletAdminUpdated(address,address)
    ArbitraryTxWasSent(address,bytes)
