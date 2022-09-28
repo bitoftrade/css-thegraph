@@ -1,8 +1,8 @@
 ## Deployment
 
 # Supported networks: 
-1. [matic](https://thegraph.com/hosted-service/subgraph/danylocodecare/v1-polygon-bitoftrade-css)
-2. [bsc](https://thegraph.com/hosted-service/subgraph/danylocodecare/v1-bsc-bitoftrade-css)
+1. [Matic](https://thegraph.com/hosted-service/subgraph/danylocodecare/v1-polygon-bitoftrade-css)
+2. [BSC](https://thegraph.com/hosted-service/subgraph/danylocodecare/v1-bsc-bitoftrade-css)
 
 ```bash
    yarn \ 
