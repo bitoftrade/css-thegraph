@@ -1,0 +1,29 @@
+specVersion: 0.0.1
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: FirstTxExecutor
+    network: matic
+    source:
+      address: "0x99f4cad6aadfc474ef081b12388b73f22d9f620c"
+      abi: FirstTxExecutor
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - AdminUpdated
+        - CCSmartWalletAddressUpdated
+        - FirstPartOfSwapExecuted
+      abis:
+        - name: FirstTxExecutor
+          file: ./abis/FirstTxExecutor.json
+      eventHandlers:
+        - event: AdminUpdated(indexed address,indexed address)
+          handler: handleAdminUpdated
+        - event: CCSmartWalletAddressUpdated(address,address)
+          handler: handleCCSmartWalletAddressUpdated
+        - event: FirstPartOfSwapExecuted(uint256,address,uint256,address,uint256)
+          handler: handleFirstPartOfSwapExecuted
+      file: ./src/first-tx-executor.ts
