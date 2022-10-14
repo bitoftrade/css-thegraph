@@ -86,7 +86,7 @@
         "type": "address"
       }
     ],
-    "name": "CCSmartWalletDirectUSDCTransfer",
+    "name": "DirectUSDCTransfer",
     "type": "event"
   },
   {

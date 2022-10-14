@@ -5,7 +5,7 @@ import {
   MarketMakerUpdated as MarketMakerUpdatedEvent,
   ResponseTxWasSent as ResponseTxWasSentEvent,
   SignerUpdated as SignerUpdatedEvent,
-  CCSmartWalletDirectUSDCTransfer as CCSmartWalletDirectUSDCTransferEvent,
+  DirectUSDCTransfer as DirectUSDCTransferEvent,
 } from "../generated/CCSmartWallet/CCSmartWallet";
 import {
   CCSmartWalletAdminUpdated,
@@ -14,7 +14,7 @@ import {
   MarketMakerUpdated,
   ResponseTxWasSent,
   SignerUpdated,
-  CCSmartWalletDirectUSDCTransfer,
+  DestDirectUSDCTransfer,
 } from "../generated/schema";
 
 export function handleCCSmartWalletAdminUpdated(
@@ -56,9 +56,9 @@ export function handleMarketMakerUpdated(event: MarketMakerUpdatedEvent): void {
 }
 
 export function handleCCSmartWalletDirectUSDCTransfer(
-  event: CCSmartWalletDirectUSDCTransferEvent
+  event: DirectUSDCTransferEvent
 ): void {
-  let entity = new CCSmartWalletDirectUSDCTransfer(
+  let entity = new DestDirectUSDCTransfer(
     event.transaction.hash.toHex() + "-" + event.logIndex.toString()
   );
   entity.userAddress = event.params.userAddress;

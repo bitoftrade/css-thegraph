@@ -8,7 +8,7 @@ import {
   AdminUpdated,
   CCSmartWalletAddressUpdated,
   FirstPartOfSwapExecuted,
-  DirectUSDCTransfer,
+  SrcDirectUSDCTransfer,
 } from "../generated/schema";
 
 export function handleAdminUpdated(event: AdminUpdatedEvent): void {
@@ -32,7 +32,7 @@ export function handleCCSmartWalletAddressUpdated(
 }
 
 export function handleDirectUSDCTransfer(event: DirectUSDCTransferEvent): void {
-  let entity = new DirectUSDCTransfer(
+  let entity = new SrcDirectUSDCTransfer(
     event.transaction.hash.toHex() + "-" + event.logIndex.toString()
   );
   entity.amount = event.params.amount;
