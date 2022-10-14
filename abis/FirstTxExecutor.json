@@ -55,6 +55,31 @@
     "inputs": [
       {
         "indexed": false,
+        "internalType": "address",
+        "name": "userAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "smartWallet",
+        "type": "address"
+      }
+    ],
+    "name": "DirectUSDCTransfer",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
         "internalType": "uint256",
         "name": "destNetworkId",
         "type": "uint256"
@@ -135,23 +160,24 @@
       { "internalType": "uint256", "name": "slippageInBP", "type": "uint256" }
     ],
     "name": "executeFirstSwap",
-    "outputs": [
-      { "internalType": "bool", "name": "txStatus", "type": "bool" },
-      { "internalType": "bytes", "name": "data", "type": "bytes" }
-    ],
+    "outputs": [],
     "stateMutability": "payable",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "string", "name": "updateMode", "type": "string" },
-      {
-        "internalType": "address",
-        "name": "newAdminOrSmartWallet",
-        "type": "address"
-      }
+      { "internalType": "address", "name": "newAddress", "type": "address" }
     ],
-    "name": "updateAdminOrSmartWallet",
+    "name": "updateAdmin",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "newAddress", "type": "address" }
+    ],
+    "name": "updateSmartWallet",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"

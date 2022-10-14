@@ -70,6 +70,31 @@
       {
         "indexed": false,
         "internalType": "address",
+        "name": "userAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "smartWallet",
+        "type": "address"
+      }
+    ],
+    "name": "CCSmartWalletDirectUSDCTransfer",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
         "name": "oldMarketMaker",
         "type": "address"
       },
@@ -158,26 +183,43 @@
   },
   {
     "inputs": [
+      { "internalType": "bytes", "name": "signature", "type": "bytes" },
+      { "internalType": "bytes", "name": "_callData", "type": "bytes" },
       { "internalType": "bytes32", "name": "srcTxHash", "type": "bytes32" },
       { "internalType": "uint256", "name": "srcChainId", "type": "uint256" },
       { "internalType": "uint256", "name": "_value", "type": "uint256" },
-      { "internalType": "bytes", "name": "_callData", "type": "bytes" },
-      { "internalType": "bytes", "name": "signature", "type": "bytes" }
+      { "internalType": "address", "name": "destToken", "type": "address" },
+      { "internalType": "uint256", "name": "amount", "type": "uint256" },
+      { "internalType": "address", "name": "userAddress", "type": "address" }
     ],
     "name": "executeResponseTx",
-    "outputs": [
-      { "internalType": "bool", "name": "txStatus", "type": "bool" },
-      { "internalType": "bytes", "name": "data", "type": "bytes" }
-    ],
+    "outputs": [{ "internalType": "bool", "name": "status", "type": "bool" }],
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "string", "name": "updateMode", "type": "string" },
       { "internalType": "address", "name": "newAddress", "type": "address" }
     ],
-    "name": "updateArbitraryAddresses",
+    "name": "updateAdmin",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "newAddress", "type": "address" }
+    ],
+    "name": "updateMarketMaker",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "newAddress", "type": "address" }
+    ],
+    "name": "updateSigner",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"

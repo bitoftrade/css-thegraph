@@ -4,11 +4,11 @@ schema:
 dataSources:
   - kind: ethereum
     name: FirstTxExecutor
-    network: bsc
+    network: mainnet
     source:
       abi: FirstTxExecutor
-      address: "0x892ce50D76233990c90dd8e2e17b32A54c163A10"
-      startBlock: 21729257
+      address: "0xdb91581407aec82d62cddae7c3fea82162fe26ab"
+      startBlock: 15745504
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -16,6 +16,7 @@ dataSources:
       entities:
         - AdminUpdated
         - CCSmartWalletAddressUpdated
+        - DirectUSDCTransfer
         - FirstPartOfSwapExecuted
       abis:
         - name: FirstTxExecutor
@@ -25,16 +26,18 @@ dataSources:
           handler: handleAdminUpdated
         - event: CCSmartWalletAddressUpdated(address,address)
           handler: handleCCSmartWalletAddressUpdated
+        - event: DirectUSDCTransfer(address,uint256,address)
+          handler: handleDirectUSDCTransfer
         - event: FirstPartOfSwapExecuted(uint256,address,uint256,address,uint256)
           handler: handleFirstPartOfSwapExecuted
       file: ./src/first-tx-executor.ts
   - kind: ethereum
     name: CCSmartWallet
-    network: bsc
+    network: mainnet
     source:
       abi: CCSmartWallet
-      address: "0xdb92c94a0e8295e54792f22dce6620fb38a91980"
-      startBlock: 21729257
+      address: "0xb4fDA86d41885ecE3672fD512446D75772EDb755"
+      startBlock: 15745504
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -43,6 +46,7 @@ dataSources:
         - CCSmartWalletAdminUpdated
         - ArbitraryTxWasSent
         - Deposit
+        - CCSmartWalletDirectUSDCTransfer
         - MarketMakerUpdated
         - ResponseTxWasSent
         - SignerUpdated
@@ -56,6 +60,8 @@ dataSources:
           handler: handleArbitraryTxWasSent
         - event: Deposit(indexed address,uint256)
           handler: handleDeposit
+        - event: CCSmartWalletDirectUSDCTransfer(address,uint256,address)
+          handler: handleCCSmartWalletDirectUSDCTransfer
         - event: MarketMakerUpdated(address,address)
           handler: handleMarketMakerUpdated
         - event: ResponseTxWasSent(uint256,bytes32)
