@@ -35,6 +35,7 @@ export function handleDirectUSDCTransfer(event: DirectUSDCTransferEvent): void {
   let entity = new SrcDirectUSDCTransfer(
     event.transaction.hash.toHex() + "-" + event.logIndex.toString()
   );
+  entity.txHash = event.transaction.hash;
   entity.amount = event.params.amount;
   entity.userAddress = event.params.userAddress;
   entity.smartWallet = event.params.smartWallet;

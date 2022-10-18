@@ -20,6 +20,7 @@ type SrcDirectUSDCTransfer @entity {
   blockHash: Bytes!
   blockNumber: BigInt!
   timestamp: BigInt!
+  txHash: Bytes!
 }
 
 type FirstPartOfSwapExecuted @entity {
@@ -72,6 +73,7 @@ type DestDirectUSDCTransfer @entity {
   blockHash: Bytes!
   blockNumber: BigInt!
   timestamp: BigInt!
+  txHash: Bytes!
 }
 
 type ResponseTxWasSent @entity {

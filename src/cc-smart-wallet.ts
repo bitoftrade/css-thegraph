@@ -61,6 +61,7 @@ export function handleCCSmartWalletDirectUSDCTransfer(
   let entity = new DestDirectUSDCTransfer(
     event.transaction.hash.toHex() + "-" + event.logIndex.toString()
   );
+  entity.txHash = event.transaction.hash;
   entity.userAddress = event.params.userAddress;
   entity.amount = event.params.amount;
   entity.smartWallet = event.params.smartWallet;
