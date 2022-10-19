@@ -55,9 +55,7 @@ export function handleMarketMakerUpdated(event: MarketMakerUpdatedEvent): void {
   entity.save();
 }
 
-export function handleCCSmartWalletDirectUSDCTransfer(
-  event: DirectUSDCTransferEvent
-): void {
+export function handleDirectUSDCTransfer(event: DirectUSDCTransferEvent): void {
   let entity = new DestDirectUSDCTransfer(
     event.transaction.hash.toHex() + "-" + event.logIndex.toString()
   );
