@@ -1,4 +1,4 @@
-type AdminUpdated @entity { 
+type AdminUpdated @entity {
   id: ID!
   oldAdmin: Bytes! # address
   newAdmin: Bytes! # address
@@ -10,6 +10,19 @@ type CCSmartWalletAddressUpdated @entity {
   newAddress: Bytes! # address
 }
 
+type SrcDirectUSDCTransfer @entity {
+  id: ID!
+  userAddress: Bytes! # address
+  amount: BigInt! # uint256
+  smartWallet: Bytes! # address
+  txGasUsed: BigInt!
+  txGasPrice: BigInt!
+  blockHash: Bytes!
+  blockNumber: BigInt!
+  timestamp: BigInt!
+  txHash: Bytes!
+}
+
 type FirstPartOfSwapExecuted @entity {
   id: ID!
   destNetworkId: BigInt! # uint256
@@ -18,7 +31,9 @@ type FirstPartOfSwapExecuted @entity {
   destUserAddress: Bytes! # address
   slippage: BigInt! # uint256
   initiator: Bytes! # address
-  srcTransactionHash: Bytes! 
+  srcTransactionHash: Bytes!
+  txGasUsed: BigInt!
+  txGasPrice: BigInt!
   blockHash: Bytes!
   blockNumber: BigInt!
   timestamp: BigInt!
@@ -48,12 +63,27 @@ type MarketMakerUpdated @entity {
   newMarketMaker: Bytes! # address
 }
 
+type DestDirectUSDCTransfer @entity {
+  id: ID!
+  userAddress: Bytes! # address
+  amount: BigInt! # uint256
+  smartWallet: Bytes! # address
+  txGasUsed: BigInt!
+  txGasPrice: BigInt!
+  blockHash: Bytes!
+  blockNumber: BigInt!
+  timestamp: BigInt!
+  txHash: Bytes!
+}
+
 type ResponseTxWasSent @entity {
   id: ID!
   srcChainId: BigInt! # uint256
   srcTransactionHash: Bytes! # bytes32
   initiator: Bytes! # address
-  destTransactionHash: Bytes! 
+  destTransactionHash: Bytes!
+  txGasUsed: BigInt!
+  txGasPrice: BigInt!
   blockHash: Bytes!
   blockNumber: BigInt!
   timestamp: BigInt!
