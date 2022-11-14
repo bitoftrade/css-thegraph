@@ -3,10 +3,10 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum
-    name: FirstTxExecutor
+    name: SrcTxExecutor
     network: mainnet
     source:
-      abi: FirstTxExecutor
+      abi: SrcTxExecutor
       address: "0xdb91581407aec82d62cddae7c3fea82162fe26ab"
       startBlock: 15745504
     mapping:
@@ -14,23 +14,20 @@ dataSources:
       apiVersion: 0.0.6
       language: wasm/assemblyscript
       entities:
-        - AdminUpdated
+        - SrcTxExecutorOwnershipTransferred
         - CCSmartWalletAddressUpdated
-        - SrcDirectUSDCTransfer
-        - FirstPartOfSwapExecuted
+        - SrcCrossSwap
       abis:
-        - name: FirstTxExecutor
-          file: ./abis/FirstTxExecutor.json
+        - name: SrcTxExecutor
+          file: ./abis/SrcTxExecutor.json
       eventHandlers:
-        - event: AdminUpdated(indexed address,indexed address)
-          handler: handleAdminUpdated
         - event: CCSmartWalletAddressUpdated(address,address)
           handler: handleCCSmartWalletAddressUpdated
-        - event: DirectUSDCTransfer(address,uint256,address)
-          handler: handleDirectUSDCTransfer
-        - event: FirstPartOfSwapExecuted(uint256,address,uint256,address,uint256)
-          handler: handleFirstPartOfSwapExecuted
-      file: ./src/first-tx-executor.ts
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: SrcCrossSwap(address,uint256,uint256,address,uint256,address,uint256)
+          handler: handleSrcCrossSwap
+      file: ./src/src-tx-executor.ts
   - kind: ethereum
     name: CCSmartWallet
     network: mainnet
@@ -43,29 +40,26 @@ dataSources:
       apiVersion: 0.0.6
       language: wasm/assemblyscript
       entities:
-        - CCSmartWalletAdminUpdated
+        - CCSmartWalletOwnershipTransferred
         - ArbitraryTxWasSent
+        - SrcTxExecutorUpdated
         - Deposit
-        - DestDirectUSDCTransfer
         - MarketMakerUpdated
-        - ResponseTxWasSent
-        - SignerUpdated
+        - DestCrossSwap
       abis:
         - name: CCSmartWallet
           file: ./abis/CCSmartWallet.json
       eventHandlers:
-        - event: CCSmartWalletAdminUpdated(address,address)
-          handler: handleCCSmartWalletAdminUpdated
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
         - event: ArbitraryTxWasSent(address,bytes)
           handler: handleArbitraryTxWasSent
         - event: Deposit(indexed address,uint256)
           handler: handleDeposit
-        - event: DirectUSDCTransfer(address,uint256,address)
-          handler: handleDirectUSDCTransfer
         - event: MarketMakerUpdated(address,address)
           handler: handleMarketMakerUpdated
-        - event: ResponseTxWasSent(uint256,bytes32)
-          handler: handleResponseTxWasSent
-        - event: SignerUpdated(indexed address,indexed address)
-          handler: handleSignerUpdated
+        - event: SrcTxExecutorUpdated(address,address)
+          handler: handleSrcTxExecutorUpdated
+        - event: DestCrossSwap(uint256,bytes32,address,uint256,address,uint256,address,uint256)
+          handler: handleDestCrossSwap
       file: ./src/cc-smart-wallet.ts

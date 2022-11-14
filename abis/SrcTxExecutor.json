@@ -22,25 +22,6 @@
       "anonymous": false,
       "inputs": [
         {
-          "indexed": false,
-          "internalType": "address",
-          "name": "to",
-          "type": "address"
-        },
-        {
-          "indexed": false,
-          "internalType": "bytes",
-          "name": "callData",
-          "type": "bytes"
-        }
-      ],
-      "name": "ArbitraryTxWasSent",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
           "indexed": true,
           "internalType": "address",
           "name": "beacon",
@@ -54,74 +35,19 @@
       "anonymous": false,
       "inputs": [
         {
-          "indexed": true,
+          "indexed": false,
           "internalType": "address",
-          "name": "sender",
+          "name": "oldAddress",
           "type": "address"
         },
         {
           "indexed": false,
-          "internalType": "uint256",
-          "name": "amount",
-          "type": "uint256"
+          "internalType": "address",
+          "name": "newAddress",
+          "type": "address"
         }
       ],
-      "name": "Deposit",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": false,
-          "internalType": "uint256",
-          "name": "srcChainId",
-          "type": "uint256"
-        },
-        {
-          "indexed": false,
-          "internalType": "bytes32",
-          "name": "srcTransactionHash",
-          "type": "bytes32"
-        },
-        {
-          "indexed": false,
-          "internalType": "address",
-          "name": "srcToken",
-          "type": "address"
-        },
-        {
-          "indexed": false,
-          "internalType": "uint256",
-          "name": "srcAmount",
-          "type": "uint256"
-        },
-        {
-          "indexed": false,
-          "internalType": "address",
-          "name": "destToken",
-          "type": "address"
-        },
-        {
-          "indexed": false,
-          "internalType": "uint256",
-          "name": "destAmount",
-          "type": "uint256"
-        },
-        {
-          "indexed": false,
-          "internalType": "address",
-          "name": "destUser",
-          "type": "address"
-        },
-        {
-          "indexed": false,
-          "internalType": "uint256",
-          "name": "usdcOutcome",
-          "type": "uint256"
-        }
-      ],
-      "name": "DestCrossSwap",
+      "name": "CCSmartWalletAddressUpdated",
       "type": "event"
     },
     {
@@ -135,25 +61,6 @@
         }
       ],
       "name": "Initialized",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": false,
-          "internalType": "address",
-          "name": "oldMarketMaker",
-          "type": "address"
-        },
-        {
-          "indexed": false,
-          "internalType": "address",
-          "name": "newMarketMaker",
-          "type": "address"
-        }
-      ],
-      "name": "MarketMakerUpdated",
       "type": "event"
     },
     {
@@ -181,17 +88,47 @@
         {
           "indexed": false,
           "internalType": "address",
-          "name": "oldSrcTxExecutor",
+          "name": "srcToken",
           "type": "address"
         },
         {
           "indexed": false,
+          "internalType": "uint256",
+          "name": "srcAmount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "destChainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
           "internalType": "address",
-          "name": "newSrcTxExecutor",
+          "name": "destToken",
           "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "minDestAmount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "destUser",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "usdcIncome",
+          "type": "uint256"
         }
       ],
-      "name": "SrcTxExecutorUpdated",
+      "name": "SrcCrossSwap",
       "type": "event"
     },
     {
@@ -234,136 +171,63 @@
       "type": "function"
     },
     {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "_to",
-          "type": "address"
-        },
-        {
-          "internalType": "uint256",
-          "name": "_value",
-          "type": "uint256"
-        },
-        {
-          "internalType": "bytes",
-          "name": "_callData",
-          "type": "bytes"
-        }
-      ],
-      "name": "execute",
+      "inputs": [],
+      "name": "ccSmartWallet",
       "outputs": [
         {
-          "internalType": "bool",
-          "name": "txStatus",
-          "type": "bool"
-        },
-        {
-          "internalType": "bytes",
-          "name": "data",
-          "type": "bytes"
+          "internalType": "address",
+          "name": "",
+          "type": "address"
         }
       ],
-      "stateMutability": "nonpayable",
+      "stateMutability": "view",
       "type": "function"
     },
     {
       "inputs": [
         {
           "internalType": "bytes",
-          "name": "signature",
-          "type": "bytes"
-        },
-        {
-          "internalType": "bytes",
-          "name": "destTxCalldata",
+          "name": "callData",
           "type": "bytes"
         },
         {
           "internalType": "address",
-          "name": "oracle",
+          "name": "srcToken",
           "type": "address"
         },
         {
-          "internalType": "bytes32",
-          "name": "srcTxHash",
-          "type": "bytes32"
-        },
-        {
           "internalType": "uint256",
-          "name": "srcChainId",
+          "name": "srcAmount",
           "type": "uint256"
         },
         {
           "internalType": "uint256",
-          "name": "eventLogIndex",
+          "name": "destChainId",
           "type": "uint256"
         },
         {
-          "components": [
-            {
-              "internalType": "address",
-              "name": "srcToken",
-              "type": "address"
-            },
-            {
-              "internalType": "uint256",
-              "name": "srcAmount",
-              "type": "uint256"
-            },
-            {
-              "internalType": "uint256",
-              "name": "destChainId",
-              "type": "uint256"
-            },
-            {
-              "internalType": "address",
-              "name": "destToken",
-              "type": "address"
-            },
-            {
-              "internalType": "uint256",
-              "name": "minDestAmount",
-              "type": "uint256"
-            },
-            {
-              "internalType": "address",
-              "name": "destUser",
-              "type": "address"
-            },
-            {
-              "internalType": "uint256",
-              "name": "usdcIncome",
-              "type": "uint256"
-            }
-          ],
-          "internalType": "struct CCSmartWallet.SrcCrossSwap",
-          "name": "srcEvent",
-          "type": "tuple"
+          "internalType": "address",
+          "name": "destToken",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "destAmount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "destUser",
+          "type": "address"
         }
       ],
-      "name": "finishCrossSwap",
+      "name": "initCrossSwap",
       "outputs": [],
-      "stateMutability": "nonpayable",
+      "stateMutability": "payable",
       "type": "function"
     },
     {
       "inputs": [
-        {
-          "internalType": "address",
-          "name": "_owner",
-          "type": "address"
-        },
-        {
-          "internalType": "address",
-          "name": "_oracleProvider",
-          "type": "address"
-        },
-        {
-          "internalType": "address",
-          "name": "_srcTxExecutor",
-          "type": "address"
-        },
         {
           "internalType": "address[]",
           "name": "usdcAddresses",
@@ -371,13 +235,13 @@
         },
         {
           "internalType": "uint256[]",
-          "name": "decimalsUsdcDividers",
+          "name": "chainIds",
           "type": "uint256[]"
         },
         {
-          "internalType": "uint256[]",
-          "name": "chainIds",
-          "type": "uint256[]"
+          "internalType": "address",
+          "name": "_owner",
+          "type": "address"
         }
       ],
       "name": "initialize",
@@ -419,19 +283,6 @@
       "type": "function"
     },
     {
-      "inputs": [],
-      "name": "srcTxExecutor",
-      "outputs": [
-        {
-          "internalType": "address",
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
       "inputs": [
         {
           "internalType": "address",
@@ -452,7 +303,7 @@
           "type": "address"
         }
       ],
-      "name": "updateSrcTxExecutor",
+      "name": "updateSmartWallet",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -487,9 +338,5 @@
       "outputs": [],
       "stateMutability": "payable",
       "type": "function"
-    },
-    {
-      "stateMutability": "payable",
-      "type": "receive"
     }
   ]

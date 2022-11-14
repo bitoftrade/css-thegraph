@@ -1,7 +1,7 @@
-type AdminUpdated @entity {
+type SrcTxExecutorOwnershipTransferred @entity {
   id: ID!
-  oldAdmin: Bytes! # address
-  newAdmin: Bytes! # address
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
 }
 
 type CCSmartWalletAddressUpdated @entity {
@@ -10,26 +10,15 @@ type CCSmartWalletAddressUpdated @entity {
   newAddress: Bytes! # address
 }
 
-type SrcDirectUSDCTransfer @entity {
+type SrcCrossSwap @entity {
   id: ID!
-  userAddress: Bytes! # address
-  amount: BigInt! # uint256
-  smartWallet: Bytes! # address
-  txGasUsed: BigInt!
-  txGasPrice: BigInt!
-  blockHash: Bytes!
-  blockNumber: BigInt!
-  timestamp: BigInt!
-  txHash: Bytes!
-}
-
-type FirstPartOfSwapExecuted @entity {
-  id: ID!
-  destNetworkId: BigInt! # uint256
-  destTokenAddress: Bytes! # address
-  destAmount: BigInt! # uint256
-  destUserAddress: Bytes! # address
-  slippage: BigInt! # uint256
+  srcToken: Bytes! # address
+  srcAmount: BigInt! # address
+  destChainId: BigInt! # uint256
+  destToken: Bytes! # address
+  minDestAmount: BigInt! # uint256
+  destUser: Bytes! # address
+  usdcIncome: BigInt! # uint256
   initiator: Bytes! # address
   srcTransactionHash: Bytes!
   txGasUsed: BigInt!
@@ -37,12 +26,6 @@ type FirstPartOfSwapExecuted @entity {
   blockHash: Bytes!
   blockNumber: BigInt!
   timestamp: BigInt!
-}
-
-type CCSmartWalletAdminUpdated @entity {
-  id: ID!
-  oldAdmin: Bytes! # address
-  newAdmin: Bytes! # address
 }
 
 type ArbitraryTxWasSent @entity {
@@ -63,25 +46,18 @@ type MarketMakerUpdated @entity {
   newMarketMaker: Bytes! # address
 }
 
-type DestDirectUSDCTransfer @entity {
-  id: ID!
-  userAddress: Bytes! # address
-  amount: BigInt! # uint256
-  smartWallet: Bytes! # address
-  txGasUsed: BigInt!
-  txGasPrice: BigInt!
-  blockHash: Bytes!
-  blockNumber: BigInt!
-  timestamp: BigInt!
-  txHash: Bytes!
-}
-
-type ResponseTxWasSent @entity {
+type DestCrossSwap @entity {
   id: ID!
   srcChainId: BigInt! # uint256
   srcTransactionHash: Bytes! # bytes32
+  srcToken: Bytes! # address
+  srcAmount: BigInt! # uint256
+  destToken: Bytes! # address
+  destAmount: BigInt! # uint256
+  destUser: Bytes! # address 
+  usdcOutcome: BigInt! # uint256
   initiator: Bytes! # address
-  destTransactionHash: Bytes!
+  destTransactionHash: Bytes! # bytes32
   txGasUsed: BigInt!
   txGasPrice: BigInt!
   blockHash: Bytes!
@@ -89,8 +65,14 @@ type ResponseTxWasSent @entity {
   timestamp: BigInt!
 }
 
-type SignerUpdated @entity {
+type CCSmartWalletOwnershipTransferred @entity {
   id: ID!
-  oldSigner: Bytes! # address
-  newSigner: Bytes! # address
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+}
+
+type SrcTxExecutorUpdated @entity {
+  id: ID!
+  oldSrcTxExecutor: Bytes! # address
+  newSrcTxExecutor: Bytes! # address
 }

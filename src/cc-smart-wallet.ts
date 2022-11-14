@@ -1,30 +1,27 @@
 import {
-  CCSmartWalletAdminUpdated as CCSmartWalletAdminUpdatedEvent,
+  OwnershipTransferred as OwnershipTransferred,
   ArbitraryTxWasSent as ArbitraryTxWasSentEvent,
   Deposit as DepositEvent,
   MarketMakerUpdated as MarketMakerUpdatedEvent,
-  ResponseTxWasSent as ResponseTxWasSentEvent,
-  SignerUpdated as SignerUpdatedEvent,
-  DirectUSDCTransfer as DirectUSDCTransferEvent,
+  DestCrossSwap as DestCrossSwapEvent,
+  SrcTxExecutorUpdated as SrcTxExecutorUpdatedEvent
 } from "../generated/CCSmartWallet/CCSmartWallet";
 import {
-  CCSmartWalletAdminUpdated,
+  SrcTxExecutorUpdated,
+  DestCrossSwap,
   ArbitraryTxWasSent,
   Deposit,
-  MarketMakerUpdated,
-  ResponseTxWasSent,
-  SignerUpdated,
-  DestDirectUSDCTransfer,
+  MarketMakerUpdated,CCSmartWalletOwnershipTransferred
 } from "../generated/schema";
 
-export function handleCCSmartWalletAdminUpdated(
-  event: CCSmartWalletAdminUpdatedEvent
+export function handleOwnershipTransferred(
+  event: OwnershipTransferred
 ): void {
-  let entity = new CCSmartWalletAdminUpdated(
+  let entity = new CCSmartWalletOwnershipTransferred(
     event.transaction.hash.toHex() + "-" + event.logIndex.toString()
   );
-  entity.oldAdmin = event.params.oldAdmin;
-  entity.newAdmin = event.params.newAdmin;
+  entity.previousOwner = event.params.previousOwner;
+  entity.newOwner = event.params.newOwner;
   entity.save();
 }
 
@@ -55,45 +52,35 @@ export function handleMarketMakerUpdated(event: MarketMakerUpdatedEvent): void {
   entity.save();
 }
 
-export function handleCCSmartWalletDirectUSDCTransfer(
-  event: DirectUSDCTransferEvent
-): void {
-  let entity = new DestDirectUSDCTransfer(
-    event.transaction.hash.toHex() + "-" + event.logIndex.toString()
-  );
-  entity.txHash = event.transaction.hash;
-  entity.userAddress = event.params.userAddress;
-  entity.amount = event.params.amount;
-  entity.smartWallet = event.params.smartWallet;
-  entity.txGasPrice = event.transaction.gasPrice;
-  entity.txGasUsed = event.transaction.gasLimit;
-  entity.blockHash = event.block.hash;
-  entity.blockNumber = event.block.number;
-  entity.timestamp = event.block.timestamp;
-  entity.save();
-}
-
-export function handleResponseTxWasSent(event: ResponseTxWasSentEvent): void {
-  let entity = new ResponseTxWasSent(
+export function handleDestCrossSwap(event: DestCrossSwapEvent): void {
+  let entity = new DestCrossSwap(
     event.transaction.hash.toHex() + "-" + event.logIndex.toString()
   );
   entity.srcChainId = event.params.srcChainId;
   entity.srcTransactionHash = event.params.srcTransactionHash;
+  entity.srcToken = event.params.srcToken;
+  entity.srcAmount = event.params.srcAmount;
+  entity.destToken = event.params.destToken;
+  entity.destAmount = event.params.destAmount;
+  entity.destUser = event.params.destUser;
+  entity.usdcOutcome = event.params.usdcOutcome;
+  entity.initiator = event.transaction.from;
   entity.destTransactionHash = event.transaction.hash;
   entity.txGasPrice = event.transaction.gasPrice;
   entity.txGasUsed = event.transaction.gasLimit;
-  entity.initiator = event.transaction.from;
   entity.blockHash = event.block.hash;
   entity.blockNumber = event.block.number;
   entity.timestamp = event.block.timestamp;
   entity.save();
 }
 
-export function handleSignerUpdated(event: SignerUpdatedEvent): void {
-  let entity = new SignerUpdated(
+export function handleSrcTxExecutorUpdated(
+  event: SrcTxExecutorUpdatedEvent
+): void {
+  let entity = new SrcTxExecutorUpdated(
     event.transaction.hash.toHex() + "-" + event.logIndex.toString()
   );
-  entity.oldSigner = event.params.oldSigner;
-  entity.newSigner = event.params.newSigner;
+  entity.oldSrcTxExecutor = event.params.oldSrcTxExecutor;
+  entity.newSrcTxExecutor = event.params.newSrcTxExecutor;
   entity.save();
 }
