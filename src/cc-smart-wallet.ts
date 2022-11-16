@@ -18,6 +18,7 @@ export function handleOwnershipTransferred(event: OwnershipTransferredEvent): vo
   let entity = new CCSmartWalletOwnershipTransferred(event.transaction.hash.toHex() + "-" + event.logIndex.toString());
   entity.previousOwner = event.params.previousOwner;
   entity.newOwner = event.params.newOwner;
+  entity.txHash = event.transaction.hash;
   entity.blockHash = event.block.hash;
   entity.blockNumber = event.block.number;
   entity.timestamp = event.block.timestamp;
@@ -28,6 +29,7 @@ export function handleArbitraryTxWasSent(event: ArbitraryTxWasSentEvent): void {
   let entity = new ArbitraryTxWasSent(event.transaction.hash.toHex() + "-" + event.logIndex.toString());
   entity.to = event.params.to;
   entity.callData = event.params.callData;
+  entity.txHash = event.transaction.hash;
   entity.blockHash = event.block.hash;
   entity.blockNumber = event.block.number;
   entity.timestamp = event.block.timestamp;
@@ -38,6 +40,7 @@ export function handleDeposit(event: DepositEvent): void {
   let entity = new Deposit(event.transaction.hash.toHex() + "-" + event.logIndex.toString());
   entity.sender = event.params.sender;
   entity.amount = event.params.amount;
+  entity.txHash = event.transaction.hash;
   entity.blockHash = event.block.hash;
   entity.blockNumber = event.block.number;
   entity.timestamp = event.block.timestamp;
@@ -48,6 +51,7 @@ export function handleMarketMakerUpdated(event: MarketMakerUpdatedEvent): void {
   let entity = new MarketMakerUpdated(event.transaction.hash.toHex() + "-" + event.logIndex.toString());
   entity.oldMarketMaker = event.params.oldMarketMaker;
   entity.newMarketMaker = event.params.newMarketMaker;
+  entity.txHash = event.transaction.hash;
   entity.blockHash = event.block.hash;
   entity.blockNumber = event.block.number;
   entity.timestamp = event.block.timestamp;
@@ -66,6 +70,7 @@ export function handleDestCrossSwap(event: DestCrossSwapEvent): void {
   entity.usdcOutcome = event.params.usdcOutcome;
   entity.initiator = event.transaction.from;
   entity.destTransactionHash = event.transaction.hash;
+  entity.txHash = event.transaction.hash;
   entity.txGasPrice = event.transaction.gasPrice;
   entity.txGasUsed = event.transaction.gasLimit;
   entity.blockHash = event.block.hash;
@@ -78,6 +83,7 @@ export function handleSrcTxExecutorUpdated(event: SrcTxExecutorUpdatedEvent): vo
   let entity = new SrcTxExecutorUpdated(event.transaction.hash.toHex() + "-" + event.logIndex.toString());
   entity.oldSrcTxExecutor = event.params.oldSrcTxExecutor;
   entity.newSrcTxExecutor = event.params.newSrcTxExecutor;
+  entity.txHash = event.transaction.hash;
   entity.blockHash = event.block.hash;
   entity.blockNumber = event.block.number;
   entity.timestamp = event.block.timestamp;

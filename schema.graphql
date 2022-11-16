@@ -2,6 +2,7 @@ type SrcTxExecutorOwnershipTransferred @entity {
   id: ID!
   previousOwner: Bytes!
   newOwner: Bytes!
+  txHash: Bytes!
   blockHash: Bytes!
   blockNumber: BigInt!
   timestamp: BigInt!
@@ -11,6 +12,7 @@ type CCSmartWalletAddressUpdated @entity {
   id: ID!
   oldAddress: Bytes!
   newAddress: Bytes!
+  txHash: Bytes!
   blockHash: Bytes!
   blockNumber: BigInt!
   timestamp: BigInt!
@@ -23,10 +25,12 @@ type SrcCrossSwap @entity {
   destChainId: BigInt!
   destToken: Bytes!
   minDestAmount: BigInt!
+  logIndex: BigInt!
   destUser: Bytes!
   usdcIncome: BigInt!
   initiator: Bytes!
   srcTransactionHash: Bytes!
+  txHash: Bytes!
   txGasUsed: BigInt!
   txGasPrice: BigInt!
   blockHash: Bytes!
@@ -39,6 +43,7 @@ type ArbitraryTxWasSent @entity {
   to: Bytes!
   callData: Bytes!
   initiator: Bytes!
+  txHash: Bytes!
   blockHash: Bytes!
   blockNumber: BigInt!
   timestamp: BigInt!
@@ -49,6 +54,7 @@ type Deposit @entity {
   sender: Bytes!
   amount: BigInt!
   initiator: Bytes!
+  txHash: Bytes!
   blockHash: Bytes!
   blockNumber: BigInt!
   timestamp: BigInt!
@@ -58,6 +64,7 @@ type MarketMakerUpdated @entity {
   id: ID!
   oldMarketMaker: Bytes!
   newMarketMaker: Bytes!
+  txHash: Bytes!
   blockHash: Bytes!
   blockNumber: BigInt!
   timestamp: BigInt!
@@ -75,6 +82,7 @@ type DestCrossSwap @entity {
   usdcOutcome: BigInt!
   initiator: Bytes!
   destTransactionHash: Bytes!
+  txHash: Bytes!
   txGasUsed: BigInt!
   txGasPrice: BigInt!
   blockHash: Bytes!
@@ -86,6 +94,7 @@ type CCSmartWalletOwnershipTransferred @entity {
   id: ID!
   previousOwner: Bytes!
   newOwner: Bytes!
+  txHash: Bytes!
   blockHash: Bytes!
   blockNumber: BigInt!
   timestamp: BigInt!
@@ -95,6 +104,7 @@ type SrcTxExecutorUpdated @entity {
   id: ID!
   oldSrcTxExecutor: Bytes!
   newSrcTxExecutor: Bytes!
+  txHash: Bytes!
   blockHash: Bytes!
   blockNumber: BigInt!
   timestamp: BigInt!
@@ -103,6 +113,7 @@ type SrcTxExecutorUpdated @entity {
 type OracleAdded @entity {
   id: ID!
   oracle: Bytes!
+  txHash: Bytes!
   blockHash: Bytes!
   blockNumber: BigInt!
   timestamp: BigInt!
@@ -111,6 +122,7 @@ type OracleAdded @entity {
 type OracleRemoved @entity {
   id: ID!
   oracle: Bytes!
+  txHash: Bytes!
   blockHash: Bytes!
   blockNumber: BigInt!
   timestamp: BigInt!
@@ -120,6 +132,7 @@ type OracleProviderOwnershipTransferred @entity {
   id: ID!
   previousOwner: Bytes!
   newOwner: Bytes!
+  txHash: Bytes!
   blockHash: Bytes!
   blockNumber: BigInt!
   timestamp: BigInt!

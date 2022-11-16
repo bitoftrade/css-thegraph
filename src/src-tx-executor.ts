@@ -13,6 +13,7 @@ export function handleOwnershipTransferred(event: OwnershipTransferredEvent): vo
   let entity = new SrcTxExecutorOwnershipTransferred(event.transaction.hash.toHex() + "-" + event.logIndex.toString());
   entity.previousOwner = event.params.previousOwner;
   entity.newOwner = event.params.newOwner;
+  entity.txHash = event.transaction.hash;
   entity.blockHash = event.block.hash;
   entity.blockNumber = event.block.number;
   entity.timestamp = event.block.timestamp;
@@ -24,6 +25,7 @@ export function handleCCSmartWalletAddressUpdated(event: CCSmartWalletAddressUpd
   let entity = new CCSmartWalletAddressUpdated(event.transaction.hash.toHex() + "-" + event.logIndex.toString());
   entity.oldAddress = event.params.oldAddress;
   entity.newAddress = event.params.newAddress;
+  entity.txHash = event.transaction.hash;
   entity.blockHash = event.block.hash;
   entity.blockNumber = event.block.number;
   entity.timestamp = event.block.timestamp;
@@ -41,6 +43,8 @@ export function handleSrcCrossSwap(event: SrcCrossSwapEvent): void {
   entity.usdcIncome = event.params.usdcIncome;
   entity.initiator = event.transaction.from;
   entity.srcTransactionHash = event.transaction.hash;
+  entity.logIndex = event.logIndex;
+  entity.txHash = event.transaction.hash;
   entity.txGasPrice = event.transaction.gasPrice;
   entity.txGasUsed = event.transaction.gasLimit;
   entity.blockHash = event.block.hash;

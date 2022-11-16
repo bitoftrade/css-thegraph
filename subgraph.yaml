@@ -4,10 +4,11 @@ schema:
 dataSources:
   - kind: ethereum
     name: OracleProvider
-    network: mainnet
+    network: avalanche
     source:
-      address: "0x8098d41C3241fD81Bd0E735883F0f5bDbf92B0ca"
       abi: OracleProvider
+      address: "0x91654bFB4E731a4ccE045F733d126a9DFa88C67e"
+      startBlock: 22443969
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -29,11 +30,11 @@ dataSources:
       file: ./src/oracle-provider.ts
   - kind: ethereum
     name: SrcTxExecutor
-    network: mainnet
+    network: avalanche
     source:
       abi: SrcTxExecutor
-      address: "0xdb91581407aec82d62cddae7c3fea82162fe26ab"
-      startBlock: 15745504
+      address: "0x3750e99f336Bae6F1E3BA821F1d4c1EdC14f41ef"
+      startBlock: 22443969
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -55,11 +56,11 @@ dataSources:
       file: ./src/src-tx-executor.ts
   - kind: ethereum
     name: CCSmartWallet
-    network: mainnet
+    network: avalanche
     source:
       abi: CCSmartWallet
-      address: "0xb4fDA86d41885ecE3672fD512446D75772EDb755"
-      startBlock: 15745504
+      address: "0xa361938676968eF89Bab08D86AcE597D2B2029e1"
+      startBlock: 22443969
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
