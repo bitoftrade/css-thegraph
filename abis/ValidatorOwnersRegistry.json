@@ -24,25 +24,6 @@
       {
         "indexed": true,
         "internalType": "address",
-        "name": "oldAdmin",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "newAdmin",
-        "type": "address"
-      }
-    ],
-    "name": "AdminUpdated",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
         "name": "beacon",
         "type": "address"
       }
@@ -67,26 +48,13 @@
     "anonymous": false,
     "inputs": [
       {
-        "indexed": true,
+        "indexed": false,
         "internalType": "address",
         "name": "oracle",
         "type": "address"
       }
     ],
-    "name": "OracleAdded",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "oracle",
-        "type": "address"
-      }
-    ],
-    "name": "OracleRemoved",
+    "name": "OracleUpdated",
     "type": "event"
   },
   {
@@ -122,17 +90,54 @@
     "type": "event"
   },
   {
+    "anonymous": false,
     "inputs": [
-      { "internalType": "address", "name": "_oracle", "type": "address" }
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "validatorAddress",
+        "type": "address"
+      }
     ],
-    "name": "addOracle",
-    "outputs": [],
-    "stateMutability": "nonpayable",
+    "name": "ValidatorAddressAdded",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address[]",
+        "name": "validatorsOwners",
+        "type": "address[]"
+      }
+    ],
+    "name": "ValidatorsOwnersAdded",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "validatorOwnerAddress",
+        "type": "address"
+      }
+    ],
+    "name": "getValidatorByOwnerAddress",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "validatorAddress",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "_owner", "type": "address" }
+      { "internalType": "address", "name": "_owner", "type": "address" },
+      { "internalType": "address", "name": "_oracle", "type": "address" }
     ],
     "name": "initialize",
     "outputs": [],
@@ -140,11 +145,9 @@
     "type": "function"
   },
   {
-    "inputs": [
-      { "internalType": "address", "name": "_oracle", "type": "address" }
-    ],
-    "name": "isWhitelisted",
-    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "inputs": [],
+    "name": "oracle",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
     "stateMutability": "view",
     "type": "function"
   },
@@ -163,17 +166,43 @@
     "type": "function"
   },
   {
-    "inputs": [
-      { "internalType": "address", "name": "_oracle", "type": "address" }
-    ],
-    "name": "removeOracle",
+    "inputs": [],
+    "name": "renounceOwnership",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "renounceOwnership",
+    "inputs": [
+      { "internalType": "address", "name": "_oracle", "type": "address" }
+    ],
+    "name": "setOracle",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "validatorAddress",
+        "type": "address"
+      }
+    ],
+    "name": "setValidator",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address[]",
+        "name": "validatorsOwnersAddresses",
+        "type": "address[]"
+      }
+    ],
+    "name": "setValidatorsOwners",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -212,6 +241,22 @@
     "name": "upgradeToAndCall",
     "outputs": [],
     "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "validatorsOwners",
+    "outputs": [
+      { "internalType": "address[]", "name": "", "type": "address[]" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "validatorsOwnersLength",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
     "type": "function"
   }
 ]

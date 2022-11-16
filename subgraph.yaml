@@ -3,88 +3,30 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum
-    name: OracleProvider
-    network: mainnet
+    name: ValidatorOwnersRegistry
+    network: avalanche
     source:
-      address: "0x8098d41C3241fD81Bd0E735883F0f5bDbf92B0ca"
-      abi: OracleProvider
+      address: "0x2c40cc577948b01b05184ee59093c4ee59703811"
+      abi: ValidatorOwnersRegistry
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
       language: wasm/assemblyscript
       entities:
-        - OracleAdded
-        - OracleRemoved
-        - OracleProviderOwnershipTransferred
+        - OracleUpdated
+        - OwnershipTransferred
+        - ValidatorAddressAdded
+        - ValidatorsOwnersAdded
       abis:
-        - name: OracleProvider
-          file: ./abis/OracleProvider.json
+        - name: ValidatorOwnersRegistry
+          file: ./abis/ValidatorOwnersRegistry.json
       eventHandlers:
-        - event: OracleAdded(indexed address)
-          handler: handleOracleAdded
-        - event: OracleRemoved(indexed address)
-          handler: handleOracleRemoved
+        - event: OracleUpdated(address)
+          handler: handleOracleUpdated
         - event: OwnershipTransferred(indexed address,indexed address)
           handler: handleOwnershipTransferred
-      file: ./src/oracle-provider.ts
-  - kind: ethereum
-    name: SrcTxExecutor
-    network: mainnet
-    source:
-      abi: SrcTxExecutor
-      address: "0xdb91581407aec82d62cddae7c3fea82162fe26ab"
-      startBlock: 15745504
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.6
-      language: wasm/assemblyscript
-      entities:
-        - SrcTxExecutorOwnershipTransferred
-        - CCSmartWalletAddressUpdated
-        - SrcCrossSwap
-      abis:
-        - name: SrcTxExecutor
-          file: ./abis/SrcTxExecutor.json
-      eventHandlers:
-        - event: CCSmartWalletAddressUpdated(address,address)
-          handler: handleCCSmartWalletAddressUpdated
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
-        - event: SrcCrossSwap(address,uint256,uint256,address,uint256,address,uint256)
-          handler: handleSrcCrossSwap
-      file: ./src/src-tx-executor.ts
-  - kind: ethereum
-    name: CCSmartWallet
-    network: mainnet
-    source:
-      abi: CCSmartWallet
-      address: "0xb4fDA86d41885ecE3672fD512446D75772EDb755"
-      startBlock: 15745504
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.6
-      language: wasm/assemblyscript
-      entities:
-        - CCSmartWalletOwnershipTransferred
-        - ArbitraryTxWasSent
-        - SrcTxExecutorUpdated
-        - Deposit
-        - MarketMakerUpdated
-        - DestCrossSwap
-      abis:
-        - name: CCSmartWallet
-          file: ./abis/CCSmartWallet.json
-      eventHandlers:
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
-        - event: ArbitraryTxWasSent(address,bytes)
-          handler: handleArbitraryTxWasSent
-        - event: Deposit(indexed address,uint256)
-          handler: handleDeposit
-        - event: MarketMakerUpdated(address,address)
-          handler: handleMarketMakerUpdated
-        - event: SrcTxExecutorUpdated(address,address)
-          handler: handleSrcTxExecutorUpdated
-        - event: DestCrossSwap(uint256,bytes32,address,uint256,address,uint256,address,uint256)
-          handler: handleDestCrossSwap
-      file: ./src/cc-smart-wallet.ts
+        - event: ValidatorAddressAdded(address)
+          handler: handleValidatorAddressAdded
+        - event: ValidatorsOwnersAdded(address[])
+          handler: handleValidatorsOwnersAdded
+      file: ./src/validator-owners-registry.ts

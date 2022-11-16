@@ -1,106 +1,20 @@
-type SrcTxExecutorOwnershipTransferred @entity {
+type ValidatorsOwnersAdded @entity {
   id: ID!
-  previousOwner: Bytes!
-  newOwner: Bytes!
+  validatorsOwners: [Bytes!]!
   blockHash: Bytes!
   blockNumber: BigInt!
   timestamp: BigInt!
 }
 
-type CCSmartWalletAddressUpdated @entity {
+type ValidatorAddressAdded @entity {
   id: ID!
-  oldAddress: Bytes!
-  newAddress: Bytes!
+  validatorAddress: Bytes!
   blockHash: Bytes!
   blockNumber: BigInt!
   timestamp: BigInt!
 }
 
-type SrcCrossSwap @entity {
-  id: ID!
-  srcToken: Bytes!
-  srcAmount: BigInt!
-  destChainId: BigInt!
-  destToken: Bytes!
-  minDestAmount: BigInt!
-  destUser: Bytes!
-  usdcIncome: BigInt!
-  initiator: Bytes!
-  srcTransactionHash: Bytes!
-  txGasUsed: BigInt!
-  txGasPrice: BigInt!
-  blockHash: Bytes!
-  blockNumber: BigInt!
-  timestamp: BigInt!
-}
-
-type ArbitraryTxWasSent @entity {
-  id: ID!
-  to: Bytes!
-  callData: Bytes!
-  initiator: Bytes!
-  blockHash: Bytes!
-  blockNumber: BigInt!
-  timestamp: BigInt!
-}
-
-type Deposit @entity {
-  id: ID!
-  sender: Bytes!
-  amount: BigInt!
-  initiator: Bytes!
-  blockHash: Bytes!
-  blockNumber: BigInt!
-  timestamp: BigInt!
-}
-
-type MarketMakerUpdated @entity {
-  id: ID!
-  oldMarketMaker: Bytes!
-  newMarketMaker: Bytes!
-  blockHash: Bytes!
-  blockNumber: BigInt!
-  timestamp: BigInt!
-}
-
-type DestCrossSwap @entity {
-  id: ID!
-  srcChainId: BigInt!
-  srcTransactionHash: Bytes!
-  srcToken: Bytes!
-  srcAmount: BigInt!
-  destToken: Bytes!
-  destAmount: BigInt!
-  destUser: Bytes!
-  usdcOutcome: BigInt!
-  initiator: Bytes!
-  destTransactionHash: Bytes!
-  txGasUsed: BigInt!
-  txGasPrice: BigInt!
-  blockHash: Bytes!
-  blockNumber: BigInt!
-  timestamp: BigInt!
-}
-
-type CCSmartWalletOwnershipTransferred @entity {
-  id: ID!
-  previousOwner: Bytes!
-  newOwner: Bytes!
-  blockHash: Bytes!
-  blockNumber: BigInt!
-  timestamp: BigInt!
-}
-
-type SrcTxExecutorUpdated @entity {
-  id: ID!
-  oldSrcTxExecutor: Bytes!
-  newSrcTxExecutor: Bytes!
-  blockHash: Bytes!
-  blockNumber: BigInt!
-  timestamp: BigInt!
-}
-
-type OracleAdded @entity {
+type OracleUpdated @entity {
   id: ID!
   oracle: Bytes!
   blockHash: Bytes!
@@ -108,15 +22,7 @@ type OracleAdded @entity {
   timestamp: BigInt!
 }
 
-type OracleRemoved @entity {
-  id: ID!
-  oracle: Bytes!
-  blockHash: Bytes!
-  blockNumber: BigInt!
-  timestamp: BigInt!
-}
-
-type OracleProviderOwnershipTransferred @entity {
+type OwnershipTransferred @entity {
   id: ID!
   previousOwner: Bytes!
   newOwner: Bytes!
