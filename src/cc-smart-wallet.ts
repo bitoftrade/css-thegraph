@@ -18,6 +18,9 @@ export function handleOwnershipTransferred(event: OwnershipTransferredEvent): vo
   let entity = new CCSmartWalletOwnershipTransferred(event.transaction.hash.toHex() + "-" + event.logIndex.toString());
   entity.previousOwner = event.params.previousOwner;
   entity.newOwner = event.params.newOwner;
+  entity.blockHash = event.block.hash;
+  entity.blockNumber = event.block.number;
+  entity.timestamp = event.block.timestamp;
   entity.save();
 }
 
