@@ -1,6 +1,7 @@
 type ValidatorsOwnersAdded @entity {
   id: ID!
   validatorsOwners: [Bytes!]!
+  txHash: Bytes!
   blockHash: Bytes!
   blockNumber: BigInt!
   timestamp: BigInt!
@@ -9,6 +10,7 @@ type ValidatorsOwnersAdded @entity {
 type ValidatorAddressAdded @entity {
   id: ID!
   validatorAddress: Bytes!
+  txHash: Bytes!
   blockHash: Bytes!
   blockNumber: BigInt!
   timestamp: BigInt!
@@ -17,6 +19,7 @@ type ValidatorAddressAdded @entity {
 type OracleUpdated @entity {
   id: ID!
   oracle: Bytes!
+  txHash: Bytes!
   blockHash: Bytes!
   blockNumber: BigInt!
   timestamp: BigInt!
@@ -26,6 +29,7 @@ type OwnershipTransferred @entity {
   id: ID!
   previousOwner: Bytes!
   newOwner: Bytes!
+  txHash: Bytes!
   blockHash: Bytes!
   blockNumber: BigInt!
   timestamp: BigInt!
