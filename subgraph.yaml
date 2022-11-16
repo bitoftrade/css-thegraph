@@ -3,6 +3,31 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum
+    name: OracleProvider
+    network: mainnet
+    source:
+      address: "0x8098d41C3241fD81Bd0E735883F0f5bDbf92B0ca"
+      abi: OracleProvider
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - OracleAdded
+        - OracleRemoved
+        - OracleProviderOwnershipTransferred
+      abis:
+        - name: OracleProvider
+          file: ./abis/OracleProvider.json
+      eventHandlers:
+        - event: OracleAdded(indexed address)
+          handler: handleOracleAdded
+        - event: OracleRemoved(indexed address)
+          handler: handleOracleRemoved
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+      file: ./src/oracle-provider.ts
+  - kind: ethereum
     name: SrcTxExecutor
     network: mainnet
     source:

@@ -10,32 +10,28 @@ import {
 } from "../generated/schema";
 
 export function handleOwnershipTransferred(event: OwnershipTransferredEvent): void {
-  let entity = new SrcTxExecutorOwnershipTransferred(
-    event.transaction.hash.toHex() + "-" + event.logIndex.toString()
-  );
+  let entity = new SrcTxExecutorOwnershipTransferred(event.transaction.hash.toHex() + "-" + event.logIndex.toString());
   entity.previousOwner = event.params.previousOwner;
   entity.newOwner = event.params.newOwner;
+  entity.blockHash = event.block.hash;
+  entity.blockNumber = event.block.number;
+  entity.timestamp = event.block.timestamp;
   entity.save();
 }
 
 
-export function handleCCSmartWalletAddressUpdated(
-  event: CCSmartWalletAddressUpdatedEvent
-): void {
-  let entity = new CCSmartWalletAddressUpdated(
-    event.transaction.hash.toHex() + "-" + event.logIndex.toString()
-  );
+export function handleCCSmartWalletAddressUpdated(event: CCSmartWalletAddressUpdatedEvent): void {
+  let entity = new CCSmartWalletAddressUpdated(event.transaction.hash.toHex() + "-" + event.logIndex.toString());
   entity.oldAddress = event.params.oldAddress;
   entity.newAddress = event.params.newAddress;
+  entity.blockHash = event.block.hash;
+  entity.blockNumber = event.block.number;
+  entity.timestamp = event.block.timestamp;
   entity.save();
 }
 
-export function handleSrcCrossSwap(
-  event: SrcCrossSwapEvent
-): void {
-  let entity = new SrcCrossSwap(
-    event.transaction.hash.toHex() + "-" + event.logIndex.toString()
-  );
+export function handleSrcCrossSwap(event: SrcCrossSwapEvent): void {
+  let entity = new SrcCrossSwap(event.transaction.hash.toHex() + "-" + event.logIndex.toString());
   entity.srcToken = event.params.srcToken;
   entity.srcAmount = event.params.srcAmount;
   entity.destChainId = event.params.destChainId;

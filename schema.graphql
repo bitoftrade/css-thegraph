@@ -1,25 +1,31 @@
 type SrcTxExecutorOwnershipTransferred @entity {
   id: ID!
-  previousOwner: Bytes! # address
-  newOwner: Bytes! # address
+  previousOwner: Bytes!
+  newOwner: Bytes!
+  blockHash: Bytes!
+  blockNumber: BigInt!
+  timestamp: BigInt!
 }
 
 type CCSmartWalletAddressUpdated @entity {
   id: ID!
-  oldAddress: Bytes! # address
-  newAddress: Bytes! # address
+  oldAddress: Bytes!
+  newAddress: Bytes!
+  blockHash: Bytes!
+  blockNumber: BigInt!
+  timestamp: BigInt!
 }
 
 type SrcCrossSwap @entity {
   id: ID!
-  srcToken: Bytes! # address
-  srcAmount: BigInt! # address
-  destChainId: BigInt! # uint256
-  destToken: Bytes! # address
-  minDestAmount: BigInt! # uint256
-  destUser: Bytes! # address
-  usdcIncome: BigInt! # uint256
-  initiator: Bytes! # address
+  srcToken: Bytes!
+  srcAmount: BigInt!
+  destChainId: BigInt!
+  destToken: Bytes!
+  minDestAmount: BigInt!
+  destUser: Bytes!
+  usdcIncome: BigInt!
+  initiator: Bytes!
   srcTransactionHash: Bytes!
   txGasUsed: BigInt!
   txGasPrice: BigInt!
@@ -30,34 +36,45 @@ type SrcCrossSwap @entity {
 
 type ArbitraryTxWasSent @entity {
   id: ID!
-  to: Bytes! # address
-  callData: Bytes! # bytes
+  to: Bytes!
+  callData: Bytes!
+  initiator: Bytes!
+  blockHash: Bytes!
+  blockNumber: BigInt!
+  timestamp: BigInt!
 }
 
 type Deposit @entity {
   id: ID!
-  sender: Bytes! # address
-  amount: BigInt! # uint256
+  sender: Bytes!
+  amount: BigInt!
+  initiator: Bytes!
+  blockHash: Bytes!
+  blockNumber: BigInt!
+  timestamp: BigInt!
 }
 
 type MarketMakerUpdated @entity {
   id: ID!
-  oldMarketMaker: Bytes! # address
-  newMarketMaker: Bytes! # address
+  oldMarketMaker: Bytes!
+  newMarketMaker: Bytes!
+  blockHash: Bytes!
+  blockNumber: BigInt!
+  timestamp: BigInt!
 }
 
 type DestCrossSwap @entity {
   id: ID!
-  srcChainId: BigInt! # uint256
-  srcTransactionHash: Bytes! # bytes32
-  srcToken: Bytes! # address
-  srcAmount: BigInt! # uint256
-  destToken: Bytes! # address
-  destAmount: BigInt! # uint256
-  destUser: Bytes! # address 
-  usdcOutcome: BigInt! # uint256
-  initiator: Bytes! # address
-  destTransactionHash: Bytes! # bytes32
+  srcChainId: BigInt!
+  srcTransactionHash: Bytes!
+  srcToken: Bytes!
+  srcAmount: BigInt!
+  destToken: Bytes!
+  destAmount: BigInt!
+  destUser: Bytes!
+  usdcOutcome: BigInt!
+  initiator: Bytes!
+  destTransactionHash: Bytes!
   txGasUsed: BigInt!
   txGasPrice: BigInt!
   blockHash: Bytes!
@@ -67,12 +84,43 @@ type DestCrossSwap @entity {
 
 type CCSmartWalletOwnershipTransferred @entity {
   id: ID!
-  previousOwner: Bytes! # address
-  newOwner: Bytes! # address
+  previousOwner: Bytes!
+  newOwner: Bytes!
+  blockHash: Bytes!
+  blockNumber: BigInt!
+  timestamp: BigInt!
 }
 
 type SrcTxExecutorUpdated @entity {
   id: ID!
-  oldSrcTxExecutor: Bytes! # address
-  newSrcTxExecutor: Bytes! # address
+  oldSrcTxExecutor: Bytes!
+  newSrcTxExecutor: Bytes!
+  blockHash: Bytes!
+  blockNumber: BigInt!
+  timestamp: BigInt!
+}
+
+type OracleAdded @entity {
+  id: ID!
+  oracle: Bytes!
+  blockHash: Bytes!
+  blockNumber: BigInt!
+  timestamp: BigInt!
+}
+
+type OracleRemoved @entity {
+  id: ID!
+  oracle: Bytes!
+  blockHash: Bytes!
+  blockNumber: BigInt!
+  timestamp: BigInt!
+}
+
+type OracleProviderOwnershipTransferred @entity {
+  id: ID!
+  previousOwner: Bytes!
+  newOwner: Bytes!
+  blockHash: Bytes!
+  blockNumber: BigInt!
+  timestamp: BigInt!
 }
