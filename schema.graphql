@@ -30,7 +30,6 @@ type SrcCrossSwap @entity {
   usdcIncome: BigInt!
   initiator: Bytes!
   srcTransactionHash: Bytes!
-  txHash: Bytes!
   txGasUsed: BigInt!
   txGasPrice: BigInt!
   blockHash: Bytes!
@@ -82,7 +81,6 @@ type DestCrossSwap @entity {
   usdcOutcome: BigInt!
   initiator: Bytes!
   destTransactionHash: Bytes!
-  txHash: Bytes!
   txGasUsed: BigInt!
   txGasPrice: BigInt!
   blockHash: Bytes!

@@ -44,7 +44,6 @@ export function handleSrcCrossSwap(event: SrcCrossSwapEvent): void {
   entity.initiator = event.transaction.from;
   entity.srcTransactionHash = event.transaction.hash;
   entity.logIndex = event.logIndex;
-  entity.txHash = event.transaction.hash;
   entity.txGasPrice = event.transaction.gasPrice;
   entity.txGasUsed = event.transaction.gasLimit;
   entity.blockHash = event.block.hash;

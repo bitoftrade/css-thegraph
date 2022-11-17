@@ -70,7 +70,6 @@ export function handleDestCrossSwap(event: DestCrossSwapEvent): void {
   entity.usdcOutcome = event.params.usdcOutcome;
   entity.initiator = event.transaction.from;
   entity.destTransactionHash = event.transaction.hash;
-  entity.txHash = event.transaction.hash;
   entity.txGasPrice = event.transaction.gasPrice;
   entity.txGasUsed = event.transaction.gasLimit;
   entity.blockHash = event.block.hash;
