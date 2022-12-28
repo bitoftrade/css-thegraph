@@ -135,3 +135,31 @@ type OracleProviderOwnershipTransferred @entity {
   blockNumber: BigInt!
   timestamp: BigInt!
 }
+
+type MultichainRouterLogAnySwapOut @entity {
+  id: ID!
+  token: Bytes!
+  from: Bytes!
+  to: Bytes!
+  amount: BigInt!
+  fromChainID: BigInt!
+  toChainID: BigInt!
+  txHash: Bytes!
+  blockHash: Bytes!
+  blockNumber: BigInt!
+  timestamp: BigInt!
+}
+
+type MultichainRouterLogAnySwapIn @entity {
+  id: ID!
+  txHash: Bytes!
+  token: Bytes!
+  to: Bytes!
+  amount: BigInt!
+  fromChainID: BigInt!
+  toChainID: BigInt!
+  txHash: Bytes!
+  blockHash: Bytes!
+  blockNumber: BigInt!
+  timestamp: BigInt!
+}
