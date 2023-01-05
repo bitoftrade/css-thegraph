@@ -152,7 +152,7 @@ type MultichainRouterLogAnySwapOut @entity {
 
 type MultichainRouterLogAnySwapIn @entity {
   id: ID!
-  txHash: Bytes!
+  srcTxHash: Bytes!
   token: Bytes!
   to: Bytes!
   amount: BigInt!
