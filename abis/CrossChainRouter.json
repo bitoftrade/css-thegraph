@@ -1,0 +1,69 @@
+[
+   {
+         "anonymous": false,
+         "inputs": [
+         {
+            "indexed": false,
+            "internalType": "address",
+            "name": "srcToken",
+            "type": "address"
+         },
+         {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "srcAmount",
+            "type": "uint256"
+         },
+         {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "destChainId",
+            "type": "uint256"
+         },
+         {
+            "indexed": false,
+            "internalType": "address",
+            "name": "destToken",
+            "type": "address"
+         },
+         {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "minDestAmount",
+            "type": "uint256"
+         },
+         {
+            "indexed": false,
+            "internalType": "address",
+            "name": "destUser",
+            "type": "address"
+         },
+         {
+            "indexed": false,
+            "internalType": "address",
+            "name": "connectorToken",
+            "type": "address"
+         },
+         {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "connectorTokenIncome",
+            "type": "uint256"
+         },
+         {
+            "indexed": false,
+            "internalType": "address",
+            "name": "refundAddress",
+            "type": "address"
+         },
+         {
+            "indexed": false,
+            "internalType": "string",
+            "name": "liqudityProvider",
+            "type": "string"
+         }
+         ],
+         "name": "SrcCrossSwap",
+         "type": "event"
+      }
+]

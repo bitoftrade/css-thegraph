@@ -1,0 +1,63 @@
+[
+   {
+         "anonymous": false,
+         "inputs": [
+         {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "srcChainId",
+            "type": "uint256"
+         },
+         {
+            "indexed": false,
+            "internalType": "bytes32",
+            "name": "srcTransactionHash",
+            "type": "bytes32"
+         },
+         {
+            "indexed": false,
+            "internalType": "address",
+            "name": "srcToken",
+            "type": "address"
+         },
+         {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "srcAmount",
+            "type": "uint256"
+         },
+         {
+            "indexed": false,
+            "internalType": "address",
+            "name": "destToken",
+            "type": "address"
+         },
+         {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "destAmount",
+            "type": "uint256"
+         },
+         {
+            "indexed": false,
+            "internalType": "address",
+            "name": "destUser",
+            "type": "address"
+         },
+         {
+            "indexed": false,
+            "internalType": "address",
+            "name": "connectorToken",
+            "type": "address"
+         },
+         {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "connectorTokenOutcome",
+            "type": "uint256"
+         }
+         ],
+         "name": "DestCrossSwap",
+         "type": "event"
+      }
+]

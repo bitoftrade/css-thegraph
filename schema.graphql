@@ -18,25 +18,6 @@ type CCSmartWalletAddressUpdated @entity {
   timestamp: BigInt!
 }
 
-type SrcCrossSwap @entity {
-  id: ID!
-  srcToken: Bytes!
-  srcAmount: BigInt!
-  destChainId: BigInt!
-  destToken: Bytes!
-  minDestAmount: BigInt!
-  logIndex: BigInt!
-  destUser: Bytes!
-  usdcIncome: BigInt!
-  initiator: Bytes!
-  srcTransactionHash: Bytes!
-  txGasUsed: BigInt!
-  txGasPrice: BigInt!
-  blockHash: Bytes!
-  blockNumber: BigInt!
-  timestamp: BigInt!
-}
-
 type ArbitraryTxWasSent @entity {
   id: ID!
   to: Bytes!
@@ -64,25 +45,6 @@ type MarketMakerUpdated @entity {
   oldMarketMaker: Bytes!
   newMarketMaker: Bytes!
   txHash: Bytes!
-  blockHash: Bytes!
-  blockNumber: BigInt!
-  timestamp: BigInt!
-}
-
-type DestCrossSwap @entity {
-  id: ID!
-  srcChainId: BigInt!
-  srcTransactionHash: Bytes!
-  srcToken: Bytes!
-  srcAmount: BigInt!
-  destToken: Bytes!
-  destAmount: BigInt!
-  destUser: Bytes!
-  usdcOutcome: BigInt!
-  initiator: Bytes!
-  destTransactionHash: Bytes!
-  txGasUsed: BigInt!
-  txGasPrice: BigInt!
   blockHash: Bytes!
   blockNumber: BigInt!
   timestamp: BigInt!
@@ -131,6 +93,59 @@ type OracleProviderOwnershipTransferred @entity {
   previousOwner: Bytes!
   newOwner: Bytes!
   txHash: Bytes!
+  blockHash: Bytes!
+  blockNumber: BigInt!
+  timestamp: BigInt!
+}
+
+
+type SrcCrossSwap @entity {
+  id: ID!
+
+  srcToken: Bytes!
+  srcAmount: BigInt!
+  destChainId: BigInt!
+  destToken: Bytes!
+  minDestAmount: BigInt!
+  destUser: Bytes!
+
+  connectorToken: Bytes!
+  connectorTokenIncome: BigInt!
+
+  refundAddress: Bytes!
+  # In latest version changed to liquidityProvider
+  liquidityProvider: String!
+
+  initiator: Bytes!
+  txHash: Bytes!
+  txGasUsed: BigInt!
+  txGasPrice: BigInt!
+
+  blockHash: Bytes!
+  blockNumber: BigInt!
+  timestamp: BigInt!
+}
+
+type DestCrossSwap @entity {
+  id: ID!
+
+  srcChainId: BigInt!
+  srcTransactionHash: Bytes!
+  srcToken: Bytes!
+  srcAmount: BigInt!
+  destToken: Bytes!
+  destAmount: BigInt!
+  destUser: Bytes!
+
+  connectorToken: Bytes!
+  connectorTokenOutcome: BigInt!
+  # liquidityProvider: String!
+
+  initiator: Bytes!
+
+  txHash: Bytes!
+  txGasUsed: BigInt!
+  txGasPrice: BigInt!
   blockHash: Bytes!
   blockNumber: BigInt!
   timestamp: BigInt!

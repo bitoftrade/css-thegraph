@@ -4,11 +4,11 @@ schema:
 dataSources:
   - kind: ethereum
     name: OracleProvider
-    network: avalanche
+    network: bsc
     source:
       abi: OracleProvider
-      address: "0x91654bFB4E731a4ccE045F733d126a9DFa88C67e"
-      startBlock: 22443969
+      address: "0xE6A37C10317C2539f3C08076c68c057652bBAb7f"
+      startBlock: 23103022
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -30,11 +30,11 @@ dataSources:
       file: ./src/oracle-provider.ts
   - kind: ethereum
     name: SrcTxExecutor
-    network: avalanche
+    network: bsc
     source:
       abi: SrcTxExecutor
       address: "0x3750e99f336Bae6F1E3BA821F1d4c1EdC14f41ef"
-      startBlock: 22443969
+      startBlock: 23103022
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -56,11 +56,11 @@ dataSources:
       file: ./src/src-tx-executor.ts
   - kind: ethereum
     name: CCSmartWallet
-    network: avalanche
+    network: bsc
     source:
       abi: CCSmartWallet
       address: "0xa361938676968eF89Bab08D86AcE597D2B2029e1"
-      startBlock: 22443969
+      startBlock: 23103022
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -89,3 +89,43 @@ dataSources:
         - event: DestCrossSwap(uint256,bytes32,address,uint256,address,uint256,address,uint256)
           handler: handleDestCrossSwap
       file: ./src/cc-smart-wallet.ts
+  - kind: ethereum
+    name: CrossChainRouter
+    network: bsc
+    source:
+      abi: CrossChainRouter
+      address: "0xa361938676968eF89Bab08D86AcE597D2B2029e1"
+      startBlock: 23103022
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - SrcCrossSwap
+      abis:
+        - name: CrossChainRouter
+          file: ./abis/CrossChainRouter.json
+      eventHandlers:
+        - event: SrcCrossSwap(address,uint256,uint256,address,uint256,address,address,uint256,address,string)
+          handler: handleSrcCrossSwap
+      file: ./src/cross-chain-router.ts
+  - kind: ethereum
+    name: CrossChainWallet
+    network: bsc
+    source:
+      abi: CrossChainWallet
+      address: "0xa361938676968eF89Bab08D86AcE597D2B2029e1"
+      startBlock: 23103022
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - SrcCrossSwap
+      abis:
+        - name: CrossChainWallet
+          file: ./abis/CrossChainWallet.json
+      eventHandlers:
+        - event: DestCrossSwap(uint256,bytes32,address,uint256,address,uint256,address,address,uint256)
+          handler: handleDestCrossSwap
+      file: ./src/cross-chain-wallet.ts
