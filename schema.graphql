@@ -38,9 +38,29 @@ type DestCrossSwap @entity {
 
   connectorToken: Bytes!
   connectorTokenOutcome: BigInt!
+  # TODO: dont forget to add this field to latest update
   # liquidityProvider: String!
 
   initiator: Bytes!
+
+  txHash: Bytes!
+  txGasUsed: BigInt!
+  txGasPrice: BigInt!
+  blockHash: Bytes!
+  blockNumber: BigInt!
+  timestamp: BigInt!
+}
+
+type MultichainTransfer @entity {
+  id: ID!
+
+  srcTransactionHash: Bytes!
+  anyToken: Bytes!
+  to: Bytes!
+  amount: BigInt!
+  fromChainId: BigInt!
+  # current chain id in thegraph
+  toChainId: BigInt!
 
   txHash: Bytes!
   txGasUsed: BigInt!

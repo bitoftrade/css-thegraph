@@ -7,8 +7,8 @@ dataSources:
     network: bsc
     source:
       abi: CrossChainRouter
-      address: "0xa361938676968eF89Bab08D86AcE597D2B2029e1"
-      startBlock: 23103022
+      address: "0xd9739B7acA106593a278AEfC2cC1392A43d5EF03"
+      startBlock: 25092510
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -27,8 +27,8 @@ dataSources:
     network: bsc
     source:
       abi: CrossChainWallet
-      address: "0xa361938676968eF89Bab08D86AcE597D2B2029e1"
-      startBlock: 23103022
+      address: "0x6d569eA24622540a63D589C10d5Ba899f8731409"
+      startBlock: 25092510
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -42,3 +42,24 @@ dataSources:
         - event: DestCrossSwap(uint256,bytes32,address,uint256,address,uint256,address,address,uint256)
           handler: handleDestCrossSwap
       file: ./src/cross-chain-wallet.ts
+  - kind: ethereum
+    name: MultichainRouter
+    network: bsc
+    source:
+      abi: MultichainRouter
+      address: "0xd1C5966f9F5Ee6881Ff6b261BBeDa45972B1B5f3"
+      startBlock: 25092510
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - MultichainTransfer
+      abis:
+        - name: MultichainRouter
+          file: ./abis/MultichainRouter.json
+      eventHandlers:
+        - event: LogAnySwapIn(indexed bytes32,indexed address,indexed
+            address,uint256,uint256,uint256)
+          handler: handleMultichainTransfer
+      file: ./src/multichain-router.ts

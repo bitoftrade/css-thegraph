@@ -3,21 +3,29 @@
   "matic": {
     "CrossChainRouter": {
       "address": "0xd9739B7acA106593a278AEfC2cC1392A43d5EF03",
-      "startBlock": 38428254
+      "startBlock": 38509185
     },
     "CrossChainWallet": {
       "address": "0x6d569eA24622540a63D589C10d5Ba899f8731409",
-      "startBlock": 38428254
+      "startBlock": 38509185
+    },
+    "MultichainRouter": {
+      "address": "0x4f3Aff3A747fCADe12598081e80c6605A8be192F",
+      "startBlock": 38509185
     }
    },
   "bsc": {
     "CrossChainRouter": {
       "address": "0xd9739B7acA106593a278AEfC2cC1392A43d5EF03",
-      "startBlock": 25034954
+      "startBlock": 25092510
     },
     "CrossChainWallet": {
       "address": "0x6d569eA24622540a63D589C10d5Ba899f8731409",
-      "startBlock": 25034954
+      "startBlock": 25092510
+    },
+    "MultichainRouter": {
+      "address": "0xd1C5966f9F5Ee6881Ff6b261BBeDa45972B1B5f3",
+      "startBlock": 25092510
     }
   },
   "avalanche": {},
