@@ -13,8 +13,7 @@ export function handleSrcCrossSwap(event: SrcCrossSwapEvent): void {
   entity.connectorToken = event.params.connectorToken;
   entity.connectorTokenIncome = event.params.connectorTokenIncome;
   entity.refundAddress = event.params.refundAddress;
-  //   In latest version changed to liquidityProvider
-  entity.liquidityProvider = event.params.liqudityProvider;
+  entity.liquidityProvider = event.params.liquidityProvider;
   entity.initiator = event.transaction.from;
 
   entity.txHash = event.transaction.hash;

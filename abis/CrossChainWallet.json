@@ -55,6 +55,12 @@
             "internalType": "uint256",
             "name": "connectorTokenOutcome",
             "type": "uint256"
+         },
+         {
+            "indexed": false,
+            "internalType": "string",
+            "name": "liquidityProvider",
+            "type": "string"
          }
          ],
          "name": "DestCrossSwap",

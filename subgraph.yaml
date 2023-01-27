@@ -39,7 +39,7 @@ dataSources:
         - name: CrossChainWallet
           file: ./abis/CrossChainWallet.json
       eventHandlers:
-        - event: DestCrossSwap(uint256,bytes32,address,uint256,address,uint256,address,address,uint256)
+        - event: DestCrossSwap(uint256,bytes32,address,uint256,address,uint256,address,address,uint256,string)
           handler: handleDestCrossSwap
       file: ./src/cross-chain-wallet.ts
   - kind: ethereum

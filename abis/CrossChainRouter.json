@@ -59,7 +59,7 @@
          {
             "indexed": false,
             "internalType": "string",
-            "name": "liqudityProvider",
+            "name": "liquidityProvider",
             "type": "string"
          }
          ],

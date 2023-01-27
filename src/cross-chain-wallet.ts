@@ -14,8 +14,7 @@ export function handleDestCrossSwap(event: DestCrossSwapEvent): void {
   entity.destUser = event.params.destUser;
   entity.connectorToken = event.params.connectorToken;
   entity.connectorTokenOutcome = event.params.connectorTokenOutcome;
-  //   In latest version changed to liquidityProvider
-  //   entity.liquidityProvider = event.params.liqudityProvider;
+  entity.liquidityProvider = event.params.liquidityProvider;
   entity.initiator = event.transaction.from;
 
   entity.txHash = event.transaction.hash;

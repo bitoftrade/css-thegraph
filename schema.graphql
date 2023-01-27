@@ -12,7 +12,6 @@ type SrcCrossSwap @entity {
   connectorTokenIncome: BigInt!
 
   refundAddress: Bytes!
-  # In latest version changed to liquidityProvider
   liquidityProvider: String!
 
   initiator: Bytes!
@@ -38,8 +37,7 @@ type DestCrossSwap @entity {
 
   connectorToken: Bytes!
   connectorTokenOutcome: BigInt!
-  # TODO: dont forget to add this field to latest update
-  # liquidityProvider: String!
+  liquidityProvider: String!
 
   initiator: Bytes!
 
