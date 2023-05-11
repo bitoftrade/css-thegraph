@@ -7,13 +7,12 @@ export function handleDestCrossSwap(event: DestCrossSwapEvent): void {
 
   entity.srcChainId = event.params.srcChainId;
   entity.srcTransactionHash = event.params.srcTransactionHash;
-  entity.srcToken = event.params.srcToken;
-  entity.srcAmount = event.params.srcAmount;
   entity.destToken = event.params.destToken;
   entity.destAmount = event.params.destAmount;
   entity.destUser = event.params.destUser;
   entity.connectorToken = event.params.connectorToken;
-  entity.connectorTokenOutcome = event.params.connectorTokenOutcome;
+  entity.protocolFee = event.params.protocolFee;
+  entity.gasCompensation = event.params.gasCompensation;
   entity.liquidityProvider = event.params.liquidityProvider;
   entity.initiator = event.transaction.from;
 

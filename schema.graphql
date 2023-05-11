@@ -29,14 +29,14 @@ type DestCrossSwap @entity {
 
   srcChainId: BigInt!
   srcTransactionHash: Bytes!
-  srcToken: Bytes!
-  srcAmount: BigInt!
   destToken: Bytes!
   destAmount: BigInt!
   destUser: Bytes!
 
   connectorToken: Bytes!
-  connectorTokenOutcome: BigInt!
+  protocolFee: BigInt!
+  gasCompensation: BigInt!
+
   liquidityProvider: String!
 
   initiator: Bytes!
