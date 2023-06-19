@@ -3,10 +3,10 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum
-    name: FirstTxExecutor
+    name: PaymentGateway
     network: mainnet
     source:
-      abi: FirstTxExecutor
+      abi: PaymentGateway
       address: "0xdb91581407aec82d62cddae7c3fea82162fe26ab"
       startBlock: 15745504
     mapping:
@@ -14,58 +14,11 @@ dataSources:
       apiVersion: 0.0.6
       language: wasm/assemblyscript
       entities:
-        - AdminUpdated
-        - CCSmartWalletAddressUpdated
-        - SrcDirectUSDCTransfer
-        - FirstPartOfSwapExecuted
+        - PaymentCompleted
       abis:
-        - name: FirstTxExecutor
-          file: ./abis/FirstTxExecutor.json
+        - name: PaymentGateway
+          file: ./abis/PaymentGateway.json
       eventHandlers:
-        - event: AdminUpdated(indexed address,indexed address)
-          handler: handleAdminUpdated
-        - event: CCSmartWalletAddressUpdated(address,address)
-          handler: handleCCSmartWalletAddressUpdated
-        - event: DirectUSDCTransfer(address,uint256,address)
-          handler: handleDirectUSDCTransfer
-        - event: FirstPartOfSwapExecuted(uint256,address,uint256,address,uint256)
-          handler: handleFirstPartOfSwapExecuted
-      file: ./src/first-tx-executor.ts
-  - kind: ethereum
-    name: CCSmartWallet
-    network: mainnet
-    source:
-      abi: CCSmartWallet
-      address: "0xb4fDA86d41885ecE3672fD512446D75772EDb755"
-      startBlock: 15745504
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.6
-      language: wasm/assemblyscript
-      entities:
-        - CCSmartWalletAdminUpdated
-        - ArbitraryTxWasSent
-        - Deposit
-        - DestDirectUSDCTransfer
-        - MarketMakerUpdated
-        - ResponseTxWasSent
-        - SignerUpdated
-      abis:
-        - name: CCSmartWallet
-          file: ./abis/CCSmartWallet.json
-      eventHandlers:
-        - event: CCSmartWalletAdminUpdated(address,address)
-          handler: handleCCSmartWalletAdminUpdated
-        - event: ArbitraryTxWasSent(address,bytes)
-          handler: handleArbitraryTxWasSent
-        - event: Deposit(indexed address,uint256)
-          handler: handleDeposit
-        - event: DirectUSDCTransfer(address,uint256,address)
-          handler: handleDirectUSDCTransfer
-        - event: MarketMakerUpdated(address,address)
-          handler: handleMarketMakerUpdated
-        - event: ResponseTxWasSent(uint256,bytes32)
-          handler: handleResponseTxWasSent
-        - event: SignerUpdated(indexed address,indexed address)
-          handler: handleSignerUpdated
-      file: ./src/cc-smart-wallet.ts
+        - event: PaymentCompleted(string,address,address,uint256,uint256,address)
+          handler: handlePaymentCompleted
+      file: ./src/crypto-payment.ts

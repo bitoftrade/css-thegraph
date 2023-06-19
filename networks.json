@@ -1,62 +1,38 @@
 {
   "mainnet": {
-    "FirstTxExecutor": {
-      "address": "0xdb91581407aec82d62cddae7c3fea82162fe26ab",
-      "startBlock": 15745858
-    },
-    "CCSmartWallet": {
-      "address": "0xb4fDA86d41885ecE3672fD512446D75772EDb755",
+    "PaymentGateway": {
+      "address": "0x",
       "startBlock": 15745858
     }
   },
   "matic": {
-    "FirstTxExecutor": {
-      "address": "0xdb91581407aec82d62cddae7c3fea82162fe26ab",
-      "startBlock": 34330813
-    },
-    "CCSmartWallet": {
-      "address": "0xb4fDA86d41885ecE3672fD512446D75772EDb755",
-      "startBlock": 34330813
+    "PaymentGateway": {
+      "address": "0x",
+      "startBlock": 15745858
     }
   },
   "bsc": {
-    "FirstTxExecutor": {
-      "address": "0xdb91581407aec82d62cddae7c3fea82162fe26ab",
-      "startBlock": 22166454
-    },
-    "CCSmartWallet": {
-      "address": "0xb4fDA86d41885ecE3672fD512446D75772EDb755",
-      "startBlock": 22166454
+    "PaymentGateway": {
+      "address": "0x",
+      "startBlock": 15745858
     }
   },
   "avalanche": {
-    "FirstTxExecutor": {
-      "address": "0xdb91581407aec82d62cddae7c3fea82162fe26ab",
-      "startBlock": 21050251
-    },
-    "CCSmartWallet": {
-      "address": "0xb4fDA86d41885ecE3672fD512446D75772EDb755",
-      "startBlock": 21050251
+    "PaymentGateway": {
+      "address": "0x",
+      "startBlock": 15745858
     }
   },
   "arbitrum-one": {
-    "FirstTxExecutor": {
-      "address": "0xdb91581407aec82d62cddae7c3fea82162fe26ab",
-      "startBlock": 30056993
-    },
-    "CCSmartWallet": {
-      "address": "0xb4fDA86d41885ecE3672fD512446D75772EDb755",
-      "startBlock": 30056993
+    "PaymentGateway": {
+      "address": "0x",
+      "startBlock": 15745858
     }
   },
   "optimism": {
-    "FirstTxExecutor": {
-      "address": "0xdb91581407aec82d62cddae7c3fea82162fe26ab",
-      "startBlock": 197256
-    },
-    "CCSmartWallet": {
-      "address": "0xb4fDA86d41885ecE3672fD512446D75772EDb755",
-      "startBlock": 197256
-    }
+    "PaymentGateway": {
+      "address": "0x",
+      "startBlock": 15745858
+    } 
   }
 }
