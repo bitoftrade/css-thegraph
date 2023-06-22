@@ -4,21 +4,21 @@ schema:
 dataSources:
   - kind: ethereum
     name: PaymentGateway
-    network: mainnet
+    network: matic
     source:
       abi: PaymentGateway
-      address: "0xdb91581407aec82d62cddae7c3fea82162fe26ab"
-      startBlock: 15745504
+      address: "0xb7742b7cf4d590de1f2bded0139537fea8f00710"
+      startBlock: 44102275
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
       language: wasm/assemblyscript
       entities:
-        - PaymentCompleted
+        - Payment
       abis:
         - name: PaymentGateway
           file: ./abis/PaymentGateway.json
       eventHandlers:
-        - event: PaymentCompleted(string,address,address,uint256,uint256,address)
-          handler: handlePaymentCompleted
+        - event: Payment(string,address,address,uint256,uint256,address)
+          handler: handlePayment
       file: ./src/crypto-payment.ts

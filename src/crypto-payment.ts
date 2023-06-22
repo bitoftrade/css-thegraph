@@ -1,8 +1,8 @@
-import { PaymentCompleted as PaymentCompletedEvent } from "../generated/PaymentGateway/PaymentGateway";
-import { PaymentCompleted } from "../generated/schema";
+import { Payment as PaymentEvent } from "../generated/PaymentGateway/PaymentGateway";
+import { Payment } from "../generated/schema";
 
-export function handlePaymentCompleted(event: PaymentCompletedEvent): void {
-  let entity = new PaymentCompleted(event.transaction.hash.toHex() + "-" + event.logIndex.toString());
+export function handlePayment(event: PaymentEvent): void {
+  let entity = new Payment(event.transaction.hash.toHex() + "-" + event.logIndex.toString());
 
   // event
   entity.orderId = event.params.orderId;

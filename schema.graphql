@@ -1,4 +1,4 @@
-type PaymentCompleted @entity {
+type Payment @entity {
   id: ID!
 
   # event

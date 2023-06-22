@@ -39,7 +39,7 @@
           "type": "address"
         }
       ],
-      "name": "PaymentCompleted",
+      "name": "Payment",
       "type": "event"
     }
 ]
