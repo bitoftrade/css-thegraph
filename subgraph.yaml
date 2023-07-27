@@ -21,6 +21,8 @@ dataSources:
       eventHandlers:
         - event: SrcCrossSwap(address,uint256,uint256,address,uint256,address,address,uint256,address,string)
           handler: handleSrcCrossSwap
+        - event: SrcCrossSwapV2(address,address,uint256,uint256,address,uint256,address,address,uint256,address,string)
+          handler: handleSrcCrossSwapV2
       file: ./src/cross-chain-router.ts
   - kind: ethereum
     name: CrossChainWallet
