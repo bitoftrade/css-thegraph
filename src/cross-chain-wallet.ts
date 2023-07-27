@@ -16,6 +16,8 @@ export function handleDestCrossSwap(event: DestCrossSwapEvent): void {
   entity.liquidityProvider = event.params.liquidityProvider;
   entity.initiator = event.transaction.from;
 
+  entity.version = "1.1";
+
   entity.txHash = event.transaction.hash;
   entity.txGasPrice = event.transaction.gasPrice;
   entity.txGasUsed = event.transaction.gasLimit;

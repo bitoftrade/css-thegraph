@@ -16,6 +16,8 @@ export function handleSrcCrossSwap(event: SrcCrossSwapEvent): void {
   entity.liquidityProvider = event.params.liquidityProvider;
   entity.initiator = event.transaction.from;
 
+  entity.version = "1.1";
+
   entity.txHash = event.transaction.hash;
   entity.txGasPrice = event.transaction.gasPrice;
   entity.txGasUsed = event.transaction.gasLimit;
@@ -40,6 +42,8 @@ export function handleSrcCrossSwapV2(event: SrcCrossSwapV2Event): void {
   entity.liquidityProvider = event.params.liquidityProvider;
   // here initiator is not event.transaction.from, but event.params.initiator 
   entity.initiator = event.params.initiator;
+
+  entity.version = "1.2";
 
   entity.txHash = event.transaction.hash;
   entity.txGasPrice = event.transaction.gasPrice;
