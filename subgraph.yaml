@@ -21,7 +21,7 @@ dataSources:
       eventHandlers:
         - event: SrcCrossSwap(address,uint256,uint256,address,uint256,address,address,uint256,address,string)
           handler: handleSrcCrossSwap
-        - event: SrcCrossSwapV2(address,address,uint256,uint256,address,uint256,address,address,uint256,address,string)
+        - event: SrcCrossSwapV2(address,address,uint256,uint256,address,uint256,address,address,uint256,address,uint256,string)
           handler: handleSrcCrossSwapV2
       file: ./src/cross-chain-router.ts
   - kind: ethereum
@@ -30,19 +30,24 @@ dataSources:
     source:
       abi: CrossChainWallet
       address: "0x6d569eA24622540a63D589C10d5Ba899f8731409"
-      startBlock: 25092510
+      startBlock: 28058133
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
       language: wasm/assemblyscript
       entities:
-        - SrcCrossSwap
+        - DestCrossSwap
+        - StargateTransferReceived
       abis:
         - name: CrossChainWallet
           file: ./abis/CrossChainWallet.json
       eventHandlers:
         - event: DestCrossSwap(uint256,bytes32,address,uint256,address,address,uint256,uint256,string)
           handler: handleDestCrossSwap
+        - event: DestCrossSwapV2(address,uint256,bytes32,address,uint256,address,address,uint256,uint256,string)
+          handler: handleDestCrossSwapV2
+        - event: StargateTransferReceived(uint256,address,uint256,uint256,uint256)
+          handler: handleStargateTransferReceived
       file: ./src/cross-chain-wallet.ts
   - kind: ethereum
     name: MultichainRouter
