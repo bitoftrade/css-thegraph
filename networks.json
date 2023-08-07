@@ -5,9 +5,13 @@
       "address": "0xd9739B7acA106593a278AEfC2cC1392A43d5EF03",
       "startBlock": 38509185
     },
-    "CrossChainWallet": {
+    "CrossChainWalletLegacy": {
       "address": "0x6d569eA24622540a63D589C10d5Ba899f8731409",
       "startBlock": 38509185
+    },
+    "CrossChainWallet": {
+      "address": "0x6d569eA24622540a63D589C10d5Ba899f8731409",
+      "startBlock": 42491932
     },
     "MultichainRouter": {
       "address": "0x4f3Aff3A747fCADe12598081e80c6605A8be192F",
@@ -19,9 +23,13 @@
       "address": "0xd9739B7acA106593a278AEfC2cC1392A43d5EF03",
       "startBlock": 25092510
     },
-    "CrossChainWallet": {
+    "CrossChainWalletLegacy": {
       "address": "0x6d569eA24622540a63D589C10d5Ba899f8731409",
       "startBlock": 25092510
+    },
+    "CrossChainWallet": {
+      "address": "0x6d569eA24622540a63D589C10d5Ba899f8731409",
+      "startBlock": 28058133
     },
     "MultichainRouter": {
       "address": "0xd1C5966f9F5Ee6881Ff6b261BBeDa45972B1B5f3",

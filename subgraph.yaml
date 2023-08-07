@@ -70,3 +70,23 @@ dataSources:
             address,uint256,uint256,uint256)
           handler: handleMultichainTransfer
       file: ./src/multichain-router.ts
+  - kind: ethereum
+    name: CrossChainWalletLegacy
+    network: bsc
+    source:
+      abi: CrossChainWalletLegacy
+      address: "0x6d569eA24622540a63D589C10d5Ba899f8731409"
+      startBlock: 25092510
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - DestCrossSwap
+      abis:
+        - name: CrossChainWalletLegacy
+          file: ./abis/CrossChainWalletLegacy.json
+      eventHandlers:
+        - event: DestCrossSwap(uint256,bytes32,address,uint256,address,uint256,address,address,uint256,string)
+          handler: handleDestCrossSwapLegacy
+      file: ./src/cross-chain-wallet-legacy.ts
