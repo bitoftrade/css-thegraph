@@ -19,6 +19,6 @@ dataSources:
         - name: PaymentGateway
           file: ./abis/PaymentGateway.json
       eventHandlers:
-        - event: Payment(string,address,address,uint256,uint256,address)
+        - event: PaymentV2(string,address,address,uint256,uint256,uint256,address)
           handler: handlePayment
       file: ./src/crypto-payment.ts

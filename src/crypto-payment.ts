@@ -1,4 +1,4 @@
-import { Payment as PaymentEvent } from "../generated/PaymentGateway/PaymentGateway";
+import { PaymentV2 as PaymentEvent } from "../generated/PaymentGateway/PaymentGateway";
 import { Payment } from "../generated/schema";
 
 export function handlePayment(event: PaymentEvent): void {
@@ -10,6 +10,7 @@ export function handlePayment(event: PaymentEvent): void {
   entity.payOutToken = event.params.payOutToken;
   entity.payInAmount = event.params.payInAmount;
   entity.payOutAmount = event.params.payOutAmount;
+  entity.protocolFeeAmount = event.params.protocolFeeAmount;
   entity.merchant = event.params.merchant;
 
   // metadata
