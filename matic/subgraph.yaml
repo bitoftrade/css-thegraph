@@ -1,6 +1,6 @@
-specVersion: 0.0.4
+specVersion: 0.0.2
 schema:
-  file: ./schema.graphql
+  file: ../schema.graphql
 dataSources:
   - kind: ethereum
     name: PaymentGateway
@@ -17,10 +17,10 @@ dataSources:
         - Payment
       abis:
         - name: PaymentGateway
-          file: ./abis/PaymentGateway.json
+          file: ../abis/PaymentGateway.json
       eventHandlers:
         - event: Payment(string,address,address,uint256,uint256,address)
           handler: handlePayment
         - event: PaymentV2(string,address,address,uint256,uint256,uint256,address)
           handler: handlePaymentV2
-      file: ./src/crypto-payment.ts
+      file: ../src/crypto-payment.ts
