@@ -1,12 +1,12 @@
 import {
   Payment as PaymentEvent,
-  PaymentV2 as PaymentV2Event,
+  PaymentV2 as PaymentV2Event
 } from "../generated/PaymentGateway/PaymentGateway";
 import { Payment } from "../generated/schema";
 import { BigInt } from "@graphprotocol/graph-ts";
 
 export function handlePayment(event: PaymentEvent): void {
-  let entity = new Payment(event.transaction.hash.toHex() + "-" + event.logIndex.toString());
+  let entity = new Payment(event.transaction.hash.toHex());
 
   // event
   entity.orderId = event.params.orderId;
@@ -32,7 +32,7 @@ export function handlePayment(event: PaymentEvent): void {
 }
 
 export function handlePaymentV2(event: PaymentV2Event): void {
-  let entity = new Payment(event.transaction.hash.toHex() + "-" + event.logIndex.toString());
+  let entity = new Payment(event.transaction.hash.toHex());
 
   // event
   entity.orderId = event.params.orderId;
