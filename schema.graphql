@@ -7,6 +7,7 @@ type Payment @entity {
   payOutToken: Bytes! # address
   payInAmount: BigInt! # uint256
   payOutAmount: BigInt! # uint256
+  protocolFeeAmount: BigInt! # uint256
   merchant: Bytes! # address
 
   # metadata
@@ -17,4 +18,6 @@ type Payment @entity {
   blockNumber: BigInt!
   timestamp: BigInt!
   txHash: Bytes!
+
+  version: String!
 }

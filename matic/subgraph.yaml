@@ -1,0 +1,26 @@
+specVersion: 0.0.4
+schema:
+  file: ../schema.graphql
+dataSources:
+  - kind: ethereum
+    name: PaymentGateway
+    network: matic
+    source:
+      abi: PaymentGateway
+      address: "0xb7742b7cf4d590de1f2bded0139537fea8f00710"
+      startBlock: 44102275
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - Payment
+      abis:
+        - name: PaymentGateway
+          file: ../abis/PaymentGateway.json
+      eventHandlers:
+        - event: Payment(string,address,address,uint256,uint256,address)
+          handler: handlePayment
+        - event: PaymentV2(string,address,address,uint256,uint256,uint256,address)
+          handler: handlePaymentV2
+      file: ../src/crypto-payment.ts
